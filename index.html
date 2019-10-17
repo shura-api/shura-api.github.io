@@ -1,0 +1,4787 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["bash","javascript"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="bash">bash</a>
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.
+<a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
+<!-- END_INFO -->
+<h1>Asset Module</h1>
+<!-- START_6c89dd553e194b009eebb253c0f25490 -->
+<h2>Module information</h2>
+<p>It can be useful when you implement frontend SPA, the api return organization info that use is working on
+It also returns list of asset types, timezone, currency prices options fields, taxes</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/system-info" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/system-info");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/system-info</code></p>
+<!-- END_6c89dd553e194b009eebb253c0f25490 -->
+<!-- START_1250ce55b1e74e60b5a5659c11950326 -->
+<h2>Add new asset</h2>
+<p>User can add new asset</p>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/add" \
+    -H "Authorization: Bearer {token}" \
+    -H "Content-Type: application/json" \
+    -d '{"name":"The location A in floor 1","status":"published"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/add");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "name": "The location A in floor 1",
+    "status": "published"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/add</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>optional</td>
+<td>require The name of asset</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>optional</td>
+<td>option The status of asset, can be null or one of value default <strong>draft</strong> or <strong>unpublished</strong>, <strong>published</strong></td>
+</tr>
+</tbody>
+</table>
+<!-- END_1250ce55b1e74e60b5a5659c11950326 -->
+<!-- START_2f626ce0568bd1a932753fa15ee5f43c -->
+<h2>api/asset/field/add</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/field/add" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/field/add");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/field/add</code></p>
+<!-- END_2f626ce0568bd1a932753fa15ee5f43c -->
+<!-- START_28502f6f049637e7d6edc9ebb1753c28 -->
+<h2>api/asset/update</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/update" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/update");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/update</code></p>
+<!-- END_28502f6f049637e7d6edc9ebb1753c28 -->
+<!-- START_30373e81fe9417ba20c80e8df35f6bdb -->
+<h2>api/asset/info/{id}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/info/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/info/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/info/{id}</code></p>
+<!-- END_30373e81fe9417ba20c80e8df35f6bdb -->
+<!-- START_f4c4d1d9d87ecd83e32d05f404714d3e -->
+<h2>api/asset/search</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/search" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/search");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/search</code></p>
+<!-- END_f4c4d1d9d87ecd83e32d05f404714d3e -->
+<!-- START_1ec9b8a82a9bb605271fc13e722c54f0 -->
+<h2>api/asset/public/search</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/public/search" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/public/search");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "error": {
+        "status": "OK",
+        "code": 200,
+        "message": ""
+    },
+    "data": {
+        "current_page": 1,
+        "data": [],
+        "first_page_url": "http:\/\/localhost\/api\/asset\/public\/search?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/asset\/public\/search?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/asset\/public\/search",
+        "per_page": 15,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/public/search</code></p>
+<!-- END_1ec9b8a82a9bb605271fc13e722c54f0 -->
+<!-- START_de5d6c03d8e52ad71ffec36b64a50005 -->
+<h2>api/asset/public/info/{id}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/public/info/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/public/info/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (422):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "error": {
+        "status": "ERROR",
+        "code": 422,
+        "message": {
+            "id": [
+                "Asset with id 1 not found"
+            ]
+        }
+    },
+    "data": {
+        "id": [
+            "Asset with id 1 not found"
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/public/info/{id}</code></p>
+<!-- END_de5d6c03d8e52ad71ffec36b64a50005 -->
+<h1>Booking</h1>
+<!-- START_db157f41e9fec57c35ad047751c80432 -->
+<h2>api/asset/booking</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/booking" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/booking");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/booking</code></p>
+<!-- END_db157f41e9fec57c35ad047751c80432 -->
+<!-- START_1dd99c0f6929bacbaa1db4e44b4f9d59 -->
+<h2>api/asset/booking/{booking}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/booking/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/booking/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/booking/{booking}</code></p>
+<!-- END_1dd99c0f6929bacbaa1db4e44b4f9d59 -->
+<!-- START_0c46fd82f087c590fd3afcf45f440342 -->
+<h2>api/asset/booking/approve/{booking}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/booking/approve/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/booking/approve/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/booking/approve/{booking}</code></p>
+<!-- END_0c46fd82f087c590fd3afcf45f440342 -->
+<!-- START_07b62a0326a7f7bda1085e78e3b3851b -->
+<h2>api/asset/booking/reject/{booking}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/booking/reject/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/booking/reject/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/booking/reject/{booking}</code></p>
+<!-- END_07b62a0326a7f7bda1085e78e3b3851b -->
+<!-- START_eb4bc24e60a953b5f29d33ab0a4ba774 -->
+<h2>api/asset/booking/search</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/booking/search" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/booking/search");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/booking/search</code></p>
+<!-- END_eb4bc24e60a953b5f29d33ab0a4ba774 -->
+<h1>Building</h1>
+<!-- START_96f462801e77889adc64a5828f7f654e -->
+<h2>api/asset/building/add</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/building/add" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/building/add");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/building/add</code></p>
+<!-- END_96f462801e77889adc64a5828f7f654e -->
+<!-- START_35cd7ad9c04f2e207a5f60d7d409e6c2 -->
+<h2>api/asset/building/update</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/building/update" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/building/update");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/building/update</code></p>
+<!-- END_35cd7ad9c04f2e207a5f60d7d409e6c2 -->
+<!-- START_f6a89b0eeb60a5467bdea969bc1d64b6 -->
+<h2>api/asset/building/{building}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/building/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/building/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/building/{building}</code></p>
+<!-- END_f6a89b0eeb60a5467bdea969bc1d64b6 -->
+<h1>Core\Category</h1>
+<p>APIs for managing users</p>
+<!-- START_b4a068ee13e80fa3f65c218736737be6 -->
+<h2>Create new category</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+This is API for create new category</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/category/create" \
+    -H "Authorization: Bearer {token}" \
+    -H "Content-Type: application/json" \
+    -d '{"name":"Banana Origin","description":"This is banana , for imported banana","parent_id":2}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/category/create");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "name": "Banana Origin",
+    "description": "This is banana , for imported banana",
+    "parent_id": 2
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/category/create</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>Name of category</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>optional</td>
+<td>The description for category</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>integer</td>
+<td>optional</td>
+<td>The parent id of category for category</td>
+</tr>
+</tbody>
+</table>
+<!-- END_b4a068ee13e80fa3f65c218736737be6 -->
+<!-- START_04ebd6ffed068cd64e5e1e66471c9cab -->
+<h2>Update A Category</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/category/update" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/category/update");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/category/update</code></p>
+<!-- END_04ebd6ffed068cd64e5e1e66471c9cab -->
+<!-- START_f5f0df53042f0a55c0e8ae793f657d96 -->
+<h2>Delete a category</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/category/delete/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/category/delete/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/category/delete/{id}</code></p>
+<!-- END_f5f0df53042f0a55c0e8ae793f657d96 -->
+<h1>Floor</h1>
+<!-- START_24f54df06ecff7774931febfd343685f -->
+<h2>api/asset/floor/add</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/floor/add" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/floor/add");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/floor/add</code></p>
+<!-- END_24f54df06ecff7774931febfd343685f -->
+<!-- START_f1fc28059512b554f311bfde5ce9b75e -->
+<h2>api/asset/floor/update</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/floor/update" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/floor/update");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/floor/update</code></p>
+<!-- END_f1fc28059512b554f311bfde5ce9b75e -->
+<!-- START_15732f7c4377da963dc2063c1a02fe06 -->
+<h2>api/asset/floor/{floor}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/floor/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/floor/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/floor/{floor}</code></p>
+<!-- END_15732f7c4377da963dc2063c1a02fe06 -->
+<h1>Organization</h1>
+<!-- START_becf1d7d7aee0b90b341b75fe3ef5abc -->
+<h2>api/asset/organization/add</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/organization/add" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/organization/add");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/organization/add</code></p>
+<!-- END_becf1d7d7aee0b90b341b75fe3ef5abc -->
+<!-- START_5199ad5144e0378bc80269d80bbfd7ca -->
+<h2>api/asset/organization/update</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/organization/update" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/organization/update");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/organization/update</code></p>
+<!-- END_5199ad5144e0378bc80269d80bbfd7ca -->
+<!-- START_b45038ce33583d3303b99b42a6c651c3 -->
+<h2>api/asset/organization/{org}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/organization/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/organization/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/organization/{org}</code></p>
+<!-- END_b45038ce33583d3303b99b42a6c651c3 -->
+<!-- START_1145b04323917f337557518cc4736b8b -->
+<h2>api/asset/customers</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/customers" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/customers");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/customers</code></p>
+<!-- END_1145b04323917f337557518cc4736b8b -->
+<h1>Price</h1>
+<!-- START_8cd829f9ecae1af06aecb94f13233c37 -->
+<h2>api/asset/price/add</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/price/add" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/price/add");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/price/add</code></p>
+<!-- END_8cd829f9ecae1af06aecb94f13233c37 -->
+<!-- START_1da9288da6e1f01ea2692cda0877c105 -->
+<h2>api/asset/price/update</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/price/update" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/price/update");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/price/update</code></p>
+<!-- END_1da9288da6e1f01ea2692cda0877c105 -->
+<!-- START_c79727274c98d5b89412c00c50bd5c05 -->
+<h2>api/asset/price/calculate</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/asset/price/calculate" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/price/calculate");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/asset/price/calculate</code></p>
+<!-- END_c79727274c98d5b89412c00c50bd5c05 -->
+<h1>Shura BackOffice</h1>
+<!-- START_50d02acdce82bd32b7035039da77c9ff -->
+<h2>Get a list of navigation item for each authenticated user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/backoffice/navigation" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/backoffice/navigation");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/backoffice/navigation</code></p>
+<!-- END_50d02acdce82bd32b7035039da77c9ff -->
+<h1>general</h1>
+<!-- START_a75d0019df6bb9cea09b22cc3e66a509 -->
+<h2>api/upload/photo</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/upload/photo" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/upload/photo");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/upload/photo</code></p>
+<!-- END_a75d0019df6bb9cea09b22cc3e66a509 -->
+<!-- START_7f0d5db48ac1eed21a5acb3c1291bfd5 -->
+<h2>api/media/list/{type}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "/api/media/list/1" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/media/list/1");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/media/list/{type}</code></p>
+<!-- END_7f0d5db48ac1eed21a5acb3c1291bfd5 -->
+<!-- START_4b9cbc8a5180be935252eedd023fb313 -->
+<h2>api/asset/system/info</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "/api/asset/system/info" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL("/api/asset/system/info");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "error": {
+        "status": "OK",
+        "code": 200,
+        "message": ""
+    },
+    "data": {
+        "asset_types": [
+            {
+                "id": 1,
+                "name": "Push Cart",
+                "system_id": "push-cart",
+                "slug": "push-cart",
+                "category_id": null,
+                "description": "Push Cart",
+                "enabled": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 2,
+                "name": "Atrium Space",
+                "system_id": "atrium-space",
+                "slug": "atrium-space",
+                "category_id": null,
+                "description": "Atrium Space",
+                "enabled": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 3,
+                "name": "Meting Room",
+                "system_id": "metting-room",
+                "slug": "metting-room",
+                "category_id": null,
+                "description": "Meting Room",
+                "enabled": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 4,
+                "name": "Theater",
+                "system_id": "theater",
+                "slug": "theater",
+                "category_id": null,
+                "description": "Theater",
+                "enabled": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 5,
+                "name": "Venue",
+                "system_id": "venue",
+                "slug": "venue",
+                "category_id": null,
+                "description": "Venue",
+                "enabled": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            }
+        ],
+        "events": {
+            "Party": [
+                {
+                    "id": 47,
+                    "static_id": 1,
+                    "name": "Party",
+                    "slug": "party",
+                    "system_id": "party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 48,
+                    "static_id": 2,
+                    "name": "After party",
+                    "slug": "after-party",
+                    "system_id": "after-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "After party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 49,
+                    "static_id": 3,
+                    "name": "Arisan",
+                    "slug": "arisan",
+                    "system_id": "arisan",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Arisan",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 50,
+                    "static_id": 4,
+                    "name": "Birthday",
+                    "slug": "birthday",
+                    "system_id": "birthday",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Birthday",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 51,
+                    "static_id": 5,
+                    "name": "Kids Birthday",
+                    "slug": "kids-birthday",
+                    "system_id": "kids-birthday",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Kids Birthday",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 52,
+                    "static_id": 6,
+                    "name": "Lunch\/dinner",
+                    "slug": "lunch-dinner",
+                    "system_id": "lunch-dinner",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Lunch\/dinner",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 53,
+                    "static_id": 7,
+                    "name": "Baby Shower",
+                    "slug": "baby-shower",
+                    "system_id": "baby-shower",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Baby Shower",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 54,
+                    "static_id": 8,
+                    "name": "Baptismal",
+                    "slug": "baptismal",
+                    "system_id": "baptismal",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Baptismal",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 55,
+                    "static_id": 9,
+                    "name": "After Prom",
+                    "slug": "after-prom",
+                    "system_id": "after-prom",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "After Prom",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 56,
+                    "static_id": 10,
+                    "name": "Prom",
+                    "slug": "prom",
+                    "system_id": "prom",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Prom",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 57,
+                    "static_id": 11,
+                    "name": "New Year Eve Party",
+                    "slug": "new-year-eve-party",
+                    "system_id": "new-year-eve-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "New Year Eve Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 58,
+                    "static_id": 12,
+                    "name": "21st Birthday Party",
+                    "slug": "21st-birthday-party",
+                    "system_id": "21st-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "21st Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 59,
+                    "static_id": 13,
+                    "name": "30th Birthday Party",
+                    "slug": "30th-birthday-party",
+                    "system_id": "30th-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "30th Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 60,
+                    "static_id": 14,
+                    "name": "40th Birthday Party",
+                    "slug": "40th-birthday-party",
+                    "system_id": "40th-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "40th Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 61,
+                    "static_id": 15,
+                    "name": "50th Birthday Party",
+                    "slug": "50th-birthday-party",
+                    "system_id": "50th-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "50th Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 62,
+                    "static_id": 16,
+                    "name": "60th Birthday Party",
+                    "slug": "60th-birthday-party",
+                    "system_id": "60th-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "60th Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 63,
+                    "static_id": 17,
+                    "name": "Halloween Party",
+                    "slug": "halloween-party",
+                    "system_id": "halloween-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Halloween Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 64,
+                    "static_id": 18,
+                    "name": "Christmas Party",
+                    "slug": "christmas-party",
+                    "system_id": "christmas-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Christmas Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 65,
+                    "static_id": 19,
+                    "name": "Graduation Party",
+                    "slug": "graduation-party",
+                    "system_id": "graduation-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Graduation Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 66,
+                    "static_id": 20,
+                    "name": "Kid's 1st Birthday",
+                    "slug": "kids-1st-birthday",
+                    "system_id": "kids-1st-birthday",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Kid's 1st Birthday",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 67,
+                    "static_id": 21,
+                    "name": "Anniversary",
+                    "slug": "anniversary",
+                    "system_id": "anniversary",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Anniversary",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 68,
+                    "static_id": 22,
+                    "name": "Year End Party",
+                    "slug": "year-end-party",
+                    "system_id": "year-end-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Year End Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 69,
+                    "static_id": 23,
+                    "name": "Dinner and Dance",
+                    "slug": "dinner-and-dance",
+                    "system_id": "dinner-and-dance",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Dinner and Dance",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 70,
+                    "static_id": 24,
+                    "name": "Corporate Function",
+                    "slug": "corporate-function",
+                    "system_id": "corporate-function",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Corporate Function",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 71,
+                    "static_id": 25,
+                    "name": "Meetings",
+                    "slug": "meetings",
+                    "system_id": "meetings",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Meetings",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 72,
+                    "static_id": 26,
+                    "name": "Conference",
+                    "slug": "conference",
+                    "system_id": "conference",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Conference",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 73,
+                    "static_id": 27,
+                    "name": "Marketing event",
+                    "slug": "marketing-event",
+                    "system_id": "marketing-event",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Marketing event",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 74,
+                    "static_id": 28,
+                    "name": "Workshop",
+                    "slug": "workshop",
+                    "system_id": "workshop",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 75,
+                    "static_id": 29,
+                    "name": "Debut",
+                    "slug": "debut",
+                    "system_id": "debut",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Debut",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 76,
+                    "static_id": 30,
+                    "name": "Team-Building",
+                    "slug": "team-building",
+                    "system_id": "team-building",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Team-Building",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 77,
+                    "static_id": 31,
+                    "name": "Wedding",
+                    "slug": "wedding",
+                    "system_id": "wedding",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Wedding",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 78,
+                    "static_id": 32,
+                    "name": "Ceremony",
+                    "slug": "ceremony",
+                    "system_id": "ceremony",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Ceremony",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 79,
+                    "static_id": 33,
+                    "name": "Engagement",
+                    "slug": "engagement",
+                    "system_id": "engagement",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Engagement",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 80,
+                    "static_id": 34,
+                    "name": "Reception",
+                    "slug": "reception",
+                    "system_id": "reception",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Reception",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 81,
+                    "static_id": 35,
+                    "name": "Bridal Shower",
+                    "slug": "bridal-shower",
+                    "system_id": "bridal-shower",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Bridal Shower",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 82,
+                    "static_id": 36,
+                    "name": "Solemnisation",
+                    "slug": "solemnisation",
+                    "system_id": "solemnisation",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Solemnisation",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 83,
+                    "static_id": 37,
+                    "name": "Bachelorette Party",
+                    "slug": "bachelorette-party",
+                    "system_id": "bachelorette-party",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Bachelorette Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 84,
+                    "static_id": 38,
+                    "name": "Hen Party",
+                    "slug": "hen-party",
+                    "system_id": "hen-party",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Hen Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 85,
+                    "static_id": 39,
+                    "name": "Proposal",
+                    "slug": "proposal",
+                    "system_id": "proposal",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Proposal",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 86,
+                    "static_id": 40,
+                    "name": "Bachelor Party",
+                    "slug": "bachelor-party",
+                    "system_id": "bachelor-party",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Bachelor Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 87,
+                    "static_id": 41,
+                    "name": "ROM",
+                    "slug": "rom",
+                    "system_id": "rom",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "ROM",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 88,
+                    "static_id": 42,
+                    "name": "Fund raising",
+                    "slug": "fund-raising",
+                    "system_id": "fund-raising",
+                    "group_id": 4,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Fund raising",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 89,
+                    "static_id": 43,
+                    "name": "Fashion show",
+                    "slug": "fashion-show",
+                    "system_id": "fashion-show",
+                    "group_id": 4,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Fashion show",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 90,
+                    "static_id": 44,
+                    "name": "Film &amp; video",
+                    "slug": "film-video",
+                    "system_id": "film-video",
+                    "group_id": 4,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Film &amp; video",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 91,
+                    "static_id": 45,
+                    "name": "Networking",
+                    "slug": "networking",
+                    "system_id": "networking",
+                    "group_id": 4,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Networking",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                }
+            ],
+            "Coporate Event - Dining": [
+                {
+                    "id": 92,
+                    "static_id": 46,
+                    "name": "Business Breakfast",
+                    "slug": "business-breakfast",
+                    "system_id": "business-breakfast",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Breakfast",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 93,
+                    "static_id": 47,
+                    "name": "Business Luncheon",
+                    "slug": "business-luncheon",
+                    "system_id": "business-luncheon",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Luncheon",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 94,
+                    "static_id": 48,
+                    "name": "Business Dinner",
+                    "slug": "business-dinner",
+                    "system_id": "business-dinner",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Dinner",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 95,
+                    "static_id": 49,
+                    "name": "Business Reception",
+                    "slug": "business-reception",
+                    "system_id": "business-reception",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Reception",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 96,
+                    "static_id": 50,
+                    "name": "Business Brunch",
+                    "slug": "business-brunch",
+                    "system_id": "business-brunch",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Brunch",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                }
+            ],
+            "Coporate Event - Intimate": [
+                {
+                    "id": 97,
+                    "static_id": 51,
+                    "name": "Media Event",
+                    "slug": "media-event",
+                    "system_id": "media-event",
+                    "group_id": 6,
+                    "model": "event",
+                    "group_name": "Coporate Event - Intimate",
+                    "description": "Media Event",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 98,
+                    "static_id": 52,
+                    "name": "Press Event",
+                    "slug": "press-event",
+                    "system_id": "press-event",
+                    "group_id": 6,
+                    "model": "event",
+                    "group_name": "Coporate Event - Intimate",
+                    "description": "Press Event",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 99,
+                    "static_id": 53,
+                    "name": "Influencer Event",
+                    "slug": "influencer-event",
+                    "system_id": "influencer-event",
+                    "group_id": 6,
+                    "model": "event",
+                    "group_name": "Coporate Event - Intimate",
+                    "description": "Influencer Event",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                }
+            ],
+            "Coporate Event - Larger Scale": [
+                {
+                    "id": 100,
+                    "static_id": 54,
+                    "name": "Corporate Seminar",
+                    "slug": "corporate-seminar",
+                    "system_id": "corporate-seminar",
+                    "group_id": 7,
+                    "model": "event",
+                    "group_name": "Coporate Event - Larger Scale",
+                    "description": "Corporate Seminar",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 101,
+                    "static_id": 55,
+                    "name": "Corporate Hackathon",
+                    "slug": "corporate-hackathon",
+                    "system_id": "corporate-hackathon",
+                    "group_id": 7,
+                    "model": "event",
+                    "group_name": "Coporate Event - Larger Scale",
+                    "description": "Corporate Hackathon",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 102,
+                    "static_id": 56,
+                    "name": "Product Launch",
+                    "slug": "product-launch",
+                    "system_id": "product-launch",
+                    "group_id": 7,
+                    "model": "event",
+                    "group_name": "Coporate Event - Larger Scale",
+                    "description": "Product Launch",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 103,
+                    "static_id": 57,
+                    "name": "Product Exhibition",
+                    "slug": "product-exhibition",
+                    "system_id": "product-exhibition",
+                    "group_id": 7,
+                    "model": "event",
+                    "group_name": "Coporate Event - Larger Scale",
+                    "description": "Product Exhibition",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                }
+            ],
+            "Coporate Event - Party": [
+                {
+                    "id": 104,
+                    "static_id": 58,
+                    "name": "Company D&amp;D",
+                    "slug": "company-d-and-d",
+                    "system_id": "company-d-and-d",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Company D&amp;D",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 105,
+                    "static_id": 59,
+                    "name": "Company Cocktail Party",
+                    "slug": "company-cocktail-party",
+                    "system_id": "company-cocktail-party",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Company Cocktail Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 106,
+                    "static_id": 60,
+                    "name": "Company Rooftop Party",
+                    "slug": "company-rooftop-party",
+                    "system_id": "company-rooftop-party",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Company Rooftop Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 107,
+                    "static_id": 61,
+                    "name": "Company Christmas Party",
+                    "slug": "company-christmas-party",
+                    "system_id": "company-christmas-party",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Company Christmas Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 108,
+                    "static_id": 62,
+                    "name": "Office Party",
+                    "slug": "office-party",
+                    "system_id": "office-party",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Office Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                }
+            ],
+            "Formal Meeting": [
+                {
+                    "id": 109,
+                    "static_id": 63,
+                    "name": "Client Meeting",
+                    "slug": "client-meeting",
+                    "system_id": "client-meeting",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Client Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 110,
+                    "static_id": 64,
+                    "name": "Board Meeting",
+                    "slug": "board-meeting",
+                    "system_id": "board-meeting",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Board Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 111,
+                    "static_id": 65,
+                    "name": "Conference",
+                    "slug": "conference",
+                    "system_id": "conference",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Conference",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 112,
+                    "static_id": 66,
+                    "name": "Interview",
+                    "slug": "interview",
+                    "system_id": "interview",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Interview",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 113,
+                    "static_id": 67,
+                    "name": "Meeting",
+                    "slug": "meeting",
+                    "system_id": "meeting",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                },
+                {
+                    "id": 114,
+                    "static_id": 68,
+                    "name": "Sales Meeting",
+                    "slug": "sales-meeting",
+                    "system_id": "sales-meeting",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Sales Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:46",
+                    "updated_at": "2019-10-17 08:23:46"
+                }
+            ],
+            "Team Meeting": [
+                {
+                    "id": 115,
+                    "static_id": 69,
+                    "name": "Off-site Meeting",
+                    "slug": "off-site-meeting",
+                    "system_id": "off-site-meeting",
+                    "group_id": 10,
+                    "model": "event",
+                    "group_name": "Team Meeting",
+                    "description": "Off-site Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 116,
+                    "static_id": 70,
+                    "name": "Training",
+                    "slug": "training",
+                    "system_id": "training",
+                    "group_id": 10,
+                    "model": "event",
+                    "group_name": "Team Meeting",
+                    "description": "Training",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 117,
+                    "static_id": 71,
+                    "name": "Team Bonding",
+                    "slug": "team-bonding",
+                    "system_id": "team-bonding",
+                    "group_id": 10,
+                    "model": "event",
+                    "group_name": "Team Meeting",
+                    "description": "Team Bonding",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                }
+            ],
+            "Cocktail Party &amp; Happy Hour": [
+                {
+                    "id": 118,
+                    "static_id": 72,
+                    "name": "Networking",
+                    "slug": "networking",
+                    "system_id": "networking",
+                    "group_id": 11,
+                    "model": "event",
+                    "group_name": "Cocktail Party &amp; Happy Hour",
+                    "description": "Networking",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 119,
+                    "static_id": 73,
+                    "name": "Cocktail Party",
+                    "slug": "cocktail-party",
+                    "system_id": "cocktail-party",
+                    "group_id": 11,
+                    "model": "event",
+                    "group_name": "Cocktail Party &amp; Happy Hour",
+                    "description": "Cocktail Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 120,
+                    "static_id": 74,
+                    "name": "Happy Hour",
+                    "slug": "happy-hour",
+                    "system_id": "happy-hour",
+                    "group_id": 11,
+                    "model": "event",
+                    "group_name": "Cocktail Party &amp; Happy Hour",
+                    "description": "Happy Hour",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                }
+            ],
+            "Classes": [
+                {
+                    "id": 121,
+                    "static_id": 75,
+                    "name": "Yoga",
+                    "slug": "yoga",
+                    "system_id": "yoga",
+                    "group_id": 12,
+                    "model": "event",
+                    "group_name": "Classes",
+                    "description": "Yoga",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 122,
+                    "static_id": 76,
+                    "name": "Cooking",
+                    "slug": "cooking",
+                    "system_id": "cooking",
+                    "group_id": 12,
+                    "model": "event",
+                    "group_name": "Classes",
+                    "description": "Cooking",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 123,
+                    "static_id": 77,
+                    "name": "Fitness",
+                    "slug": "fitness",
+                    "system_id": "fitness",
+                    "group_id": 12,
+                    "model": "event",
+                    "group_name": "Classes",
+                    "description": "Fitness",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 124,
+                    "static_id": 78,
+                    "name": "Workshop",
+                    "slug": "workshop",
+                    "system_id": "workshop",
+                    "group_id": 12,
+                    "model": "event",
+                    "group_name": "Classes",
+                    "description": "Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                }
+            ],
+            "Shoots": [
+                {
+                    "id": 125,
+                    "static_id": 79,
+                    "name": "Photo Shoot",
+                    "slug": "photo-shoot",
+                    "system_id": "photo-shoot",
+                    "group_id": 13,
+                    "model": "event",
+                    "group_name": "Shoots",
+                    "description": "Photo Shoot",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 126,
+                    "static_id": 80,
+                    "name": "Film",
+                    "slug": "film",
+                    "system_id": "film",
+                    "group_id": 13,
+                    "model": "event",
+                    "group_name": "Shoots",
+                    "description": "Film",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 127,
+                    "static_id": 81,
+                    "name": "Fashion Shoot",
+                    "slug": "fashion-shoot",
+                    "system_id": "fashion-shoot",
+                    "group_id": 13,
+                    "model": "event",
+                    "group_name": "Shoots",
+                    "description": "Fashion Shoot",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 128,
+                    "static_id": 82,
+                    "name": "Video Shoot",
+                    "slug": "video-shoot",
+                    "system_id": "video-shoot",
+                    "group_id": 13,
+                    "model": "event",
+                    "group_name": "Shoots",
+                    "description": "Video Shoot",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                }
+            ],
+            "Workshop": [
+                {
+                    "id": 129,
+                    "static_id": 83,
+                    "name": "Flower Workshop",
+                    "slug": "flower-workshop",
+                    "system_id": "flower-workshop",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Flower Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 130,
+                    "static_id": 84,
+                    "name": "Candle Making Workshop",
+                    "slug": "candle-making-workshop",
+                    "system_id": "candle-making-workshop",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Candle Making Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 131,
+                    "static_id": 85,
+                    "name": "Cooking Workshop",
+                    "slug": "cooking-workshop",
+                    "system_id": "cooking-workshop",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Cooking Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 132,
+                    "static_id": 86,
+                    "name": "Tea",
+                    "slug": "tea",
+                    "system_id": "tea",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Tea",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 133,
+                    "static_id": 87,
+                    "name": "Coffee",
+                    "slug": "coffee",
+                    "system_id": "coffee",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Coffee",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 134,
+                    "static_id": 88,
+                    "name": "Perfume",
+                    "slug": "perfume",
+                    "system_id": "perfume",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Perfume",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 135,
+                    "static_id": 89,
+                    "name": "Art",
+                    "slug": "art",
+                    "system_id": "art",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Art",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 136,
+                    "static_id": 90,
+                    "name": "Leather",
+                    "slug": "leather",
+                    "system_id": "leather",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Leather",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 137,
+                    "static_id": 91,
+                    "name": "Wood",
+                    "slug": "wood",
+                    "system_id": "wood",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Wood",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                },
+                {
+                    "id": 138,
+                    "static_id": 92,
+                    "name": "Craft",
+                    "slug": "craft",
+                    "system_id": "craft",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Craft",
+                    "is_published": 1,
+                    "created_at": "2019-10-17 08:23:47",
+                    "updated_at": "2019-10-17 08:23:47"
+                }
+            ]
+        },
+        "venue_types": [
+            {
+                "id": 1,
+                "static_id": 1,
+                "name": "Auditorium",
+                "slug": "auditorium",
+                "system_id": "auditorium",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Auditorium",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 2,
+                "static_id": 2,
+                "name": "Ballroom",
+                "slug": "ballroom",
+                "system_id": "ballroom",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Ballroom",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 3,
+                "static_id": 3,
+                "name": "Bar",
+                "slug": "bar",
+                "system_id": "bar",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Bar",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 4,
+                "static_id": 4,
+                "name": "Cafe",
+                "slug": "cafe",
+                "system_id": "cafe",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Cafe",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 5,
+                "static_id": 5,
+                "name": "Club",
+                "slug": "club",
+                "system_id": "club",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Club",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 6,
+                "static_id": 6,
+                "name": "Co-working space",
+                "slug": "co-working-space",
+                "system_id": "co-working-space",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Co-working space",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 7,
+                "static_id": 7,
+                "name": "Conference Hall",
+                "slug": "conference-hall",
+                "system_id": "conference-hall",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Conference Hall",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 8,
+                "static_id": 8,
+                "name": "Country Club",
+                "slug": "country-club",
+                "system_id": "country-club",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Country Club",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 9,
+                "static_id": 9,
+                "name": "Kids &amp; Recreational",
+                "slug": "kids-recreational",
+                "system_id": "kids-recreational",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Kids &amp; Recreational",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 10,
+                "static_id": 10,
+                "name": "Event space",
+                "slug": "event-space",
+                "system_id": "event-space",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Event space",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 11,
+                "static_id": 11,
+                "name": "Gallery",
+                "slug": "gallery",
+                "system_id": "gallery",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Gallery",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 12,
+                "static_id": 12,
+                "name": "Halal Venue",
+                "slug": "halal-venue",
+                "system_id": "halal-venue",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Halal Venue",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 13,
+                "static_id": 13,
+                "name": "Hotel",
+                "slug": "hotel",
+                "system_id": "hotel",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Hotel",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 14,
+                "static_id": 14,
+                "name": "Meeting Room\/Space",
+                "slug": "meeting-room-space",
+                "system_id": "meeting-room-space",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Meeting Room\/Space",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 15,
+                "static_id": 15,
+                "name": "MICE",
+                "slug": "mice",
+                "system_id": "mice",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "MICE",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 16,
+                "static_id": 16,
+                "name": "Museum",
+                "slug": "museum",
+                "system_id": "museum",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Museum",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 17,
+                "static_id": 17,
+                "name": "Outdoors",
+                "slug": "outdoors",
+                "system_id": "outdoors",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Outdoors",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 18,
+                "static_id": 18,
+                "name": "Private estate",
+                "slug": "private-estate",
+                "system_id": "private-estate",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Private estate",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 19,
+                "static_id": 19,
+                "name": "Restaurant",
+                "slug": "restaurant",
+                "system_id": "restaurant",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Restaurant",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 20,
+                "static_id": 20,
+                "name": "Rooftop",
+                "slug": "rooftop",
+                "system_id": "rooftop",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Rooftop",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 21,
+                "static_id": 21,
+                "name": "Salon",
+                "slug": "salon",
+                "system_id": "salon",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Salon",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 22,
+                "static_id": 22,
+                "name": "Solemnisation",
+                "slug": "solemnisation",
+                "system_id": "solemnisation",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Solemnisation",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 23,
+                "static_id": 23,
+                "name": "Studio",
+                "slug": "studio",
+                "system_id": "studio",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Studio",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 24,
+                "static_id": 24,
+                "name": "Theater",
+                "slug": "theater",
+                "system_id": "theater",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Theater",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 25,
+                "static_id": 25,
+                "name": "Unique venue",
+                "slug": "unique-venue",
+                "system_id": "unique-venue",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Unique venue",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 26,
+                "static_id": 26,
+                "name": "Yacht",
+                "slug": "yacht",
+                "system_id": "yacht",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Yacht",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 27,
+                "static_id": 27,
+                "name": "University \/ School",
+                "slug": "university-school",
+                "system_id": "university-school",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "University \/ School",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 28,
+                "static_id": 28,
+                "name": "Training Room",
+                "slug": "training-room",
+                "system_id": "training-room",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Training Room",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 29,
+                "static_id": 29,
+                "name": "Function hall",
+                "slug": "function-hall",
+                "system_id": "function-hall",
+                "group_id": 0,
+                "model": "type",
+                "group_name": "",
+                "description": "Function hall",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            }
+        ],
+        "amenities": [
+            {
+                "id": 36,
+                "static_id": 1,
+                "name": "Air conditioning",
+                "slug": "air-conditioning",
+                "system_id": "air-conditioning",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Air conditioning",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 37,
+                "static_id": 2,
+                "name": "Bar tab",
+                "slug": "bar-tab",
+                "system_id": "bar-tab",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Bar tab",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 38,
+                "static_id": 3,
+                "name": "Bring your own stuff",
+                "slug": "bring-your-own-stuff",
+                "system_id": "bring-your-own-stuff",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Bring your own stuff",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 39,
+                "static_id": 4,
+                "name": "Full bar",
+                "slug": "full-bar",
+                "system_id": "full-bar",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Full bar",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 40,
+                "static_id": 5,
+                "name": "Microphone",
+                "slug": "microphone",
+                "system_id": "microphone",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Microphone",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 41,
+                "static_id": 6,
+                "name": "Pool",
+                "slug": "pool",
+                "system_id": "pool",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Pool",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 42,
+                "static_id": 7,
+                "name": "Private room",
+                "slug": "private-room",
+                "system_id": "private-room",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Private room",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 43,
+                "static_id": 8,
+                "name": "Projector\/TV",
+                "slug": "projector-tv",
+                "system_id": "projector-tv",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Projector\/TV",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 44,
+                "static_id": 9,
+                "name": "Smoking area",
+                "slug": "smoking-area",
+                "system_id": "smoking-area",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Smoking area",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 45,
+                "static_id": 10,
+                "name": "Stage",
+                "slug": "stage",
+                "system_id": "stage",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Stage",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            },
+            {
+                "id": 46,
+                "static_id": 11,
+                "name": "Wifi",
+                "slug": "wifi",
+                "system_id": "wifi",
+                "group_id": 0,
+                "model": "amenities",
+                "group_name": "",
+                "description": "Wifi",
+                "is_published": 1,
+                "created_at": "2019-10-17 08:23:46",
+                "updated_at": "2019-10-17 08:23:46"
+            }
+        ],
+        "locations": [
+            {
+                "value": "Afghanistan",
+                "alpha_2": "AF",
+                "id": "AFG",
+                "alpha_3": "AFG",
+                "un_code_m49": "004"
+            },
+            {
+                "value": "Aland Islands",
+                "alpha_2": "AX",
+                "id": "ALA",
+                "alpha_3": "ALA",
+                "un_code_m49": "248"
+            },
+            {
+                "value": "Albania",
+                "alpha_2": "AL",
+                "id": "ALB",
+                "alpha_3": "ALB",
+                "un_code_m49": "008"
+            },
+            {
+                "value": "Algeria",
+                "alpha_2": "DZ",
+                "id": "DZA",
+                "alpha_3": "DZA",
+                "un_code_m49": "012"
+            },
+            {
+                "value": "American Samoa",
+                "alpha_2": "AS",
+                "id": "ASM",
+                "alpha_3": "ASM",
+                "un_code_m49": "016"
+            },
+            {
+                "value": "Andorra",
+                "alpha_2": "AD",
+                "id": "AND",
+                "alpha_3": "AND",
+                "un_code_m49": "020"
+            },
+            {
+                "value": "Angola",
+                "alpha_2": "AO",
+                "id": "AGO",
+                "alpha_3": "AGO",
+                "un_code_m49": "024"
+            },
+            {
+                "value": "Anguilla",
+                "alpha_2": "AI",
+                "id": "AIA",
+                "alpha_3": "AIA",
+                "un_code_m49": "660"
+            },
+            {
+                "value": "Antarctica",
+                "alpha_2": "AQ",
+                "id": "ATA",
+                "alpha_3": "ATA",
+                "un_code_m49": "010"
+            },
+            {
+                "value": "Antigua and Barbuda",
+                "alpha_2": "AG",
+                "id": "ATG",
+                "alpha_3": "ATG",
+                "un_code_m49": "028"
+            },
+            {
+                "value": "Argentina",
+                "alpha_2": "AR",
+                "id": "ARG",
+                "alpha_3": "ARG",
+                "un_code_m49": "032"
+            },
+            {
+                "value": "Armenia",
+                "alpha_2": "AM",
+                "id": "ARM",
+                "alpha_3": "ARM",
+                "un_code_m49": "051"
+            },
+            {
+                "value": "Aruba",
+                "alpha_2": "AW",
+                "id": "ABW",
+                "alpha_3": "ABW",
+                "un_code_m49": "533"
+            },
+            {
+                "value": "Australia",
+                "alpha_2": "AU",
+                "id": "AUS",
+                "alpha_3": "AUS",
+                "un_code_m49": "036"
+            },
+            {
+                "value": "Austria",
+                "alpha_2": "AT",
+                "id": "AUT",
+                "alpha_3": "AUT",
+                "un_code_m49": "040"
+            },
+            {
+                "value": "Azerbaijan",
+                "alpha_2": "AZ",
+                "id": "AZE",
+                "alpha_3": "AZE",
+                "un_code_m49": "031"
+            },
+            {
+                "value": "Bahamas",
+                "alpha_2": "BS",
+                "id": "BHS",
+                "alpha_3": "BHS",
+                "un_code_m49": "044"
+            },
+            {
+                "value": "Bahrain",
+                "alpha_2": "BH",
+                "id": "BHR",
+                "alpha_3": "BHR",
+                "un_code_m49": "048"
+            },
+            {
+                "value": "Bangladesh",
+                "alpha_2": "BD",
+                "id": "BGD",
+                "alpha_3": "BGD",
+                "un_code_m49": "050"
+            },
+            {
+                "value": "Barbados",
+                "alpha_2": "BB",
+                "id": "BRB",
+                "alpha_3": "BRB",
+                "un_code_m49": "052"
+            },
+            {
+                "value": "Belarus",
+                "alpha_2": "BY",
+                "id": "BLR",
+                "alpha_3": "BLR",
+                "un_code_m49": "112"
+            },
+            {
+                "value": "Belgium",
+                "alpha_2": "BE",
+                "id": "BEL",
+                "alpha_3": "BEL",
+                "un_code_m49": "056"
+            },
+            {
+                "value": "Belize",
+                "alpha_2": "BZ",
+                "id": "BLZ",
+                "alpha_3": "BLZ",
+                "un_code_m49": "084"
+            },
+            {
+                "value": "Benin",
+                "alpha_2": "BJ",
+                "id": "BEN",
+                "alpha_3": "BEN",
+                "un_code_m49": "204"
+            },
+            {
+                "value": "Bermuda",
+                "alpha_2": "BM",
+                "id": "BMU",
+                "alpha_3": "BMU",
+                "un_code_m49": "060"
+            },
+            {
+                "value": "Bhutan",
+                "alpha_2": "BT",
+                "id": "BTN",
+                "alpha_3": "BTN",
+                "un_code_m49": "064"
+            },
+            {
+                "value": "Bolivia",
+                "alpha_2": "BO",
+                "id": "BOL",
+                "alpha_3": "BOL",
+                "un_code_m49": "068"
+            },
+            {
+                "value": "Bosnia and Herzegovina",
+                "alpha_2": "BA",
+                "id": "BIH",
+                "alpha_3": "BIH",
+                "un_code_m49": "070"
+            },
+            {
+                "value": "Botswana",
+                "alpha_2": "BW",
+                "id": "BWA",
+                "alpha_3": "BWA",
+                "un_code_m49": "072"
+            },
+            {
+                "value": "Bouvet Island",
+                "alpha_2": "BV",
+                "id": "BVT",
+                "alpha_3": "BVT",
+                "un_code_m49": "074"
+            },
+            {
+                "value": "Brazil",
+                "alpha_2": "BR",
+                "id": "BRA",
+                "alpha_3": "BRA",
+                "un_code_m49": "076"
+            },
+            {
+                "value": "British Virgin Islands",
+                "alpha_2": "VG",
+                "id": "VGB",
+                "alpha_3": "VGB",
+                "un_code_m49": "092"
+            },
+            {
+                "value": "British Indian Ocean Territory",
+                "alpha_2": "IO",
+                "id": "IOT",
+                "alpha_3": "IOT",
+                "un_code_m49": "086"
+            },
+            {
+                "value": "Brunei Darussalam",
+                "alpha_2": "BN",
+                "id": "BRN",
+                "alpha_3": "BRN",
+                "un_code_m49": "096"
+            },
+            {
+                "value": "Bulgaria",
+                "alpha_2": "BG",
+                "id": "BGR",
+                "alpha_3": "BGR",
+                "un_code_m49": "100"
+            },
+            {
+                "value": "Burkina Faso",
+                "alpha_2": "BF",
+                "id": "BFA",
+                "alpha_3": "BFA",
+                "un_code_m49": "854"
+            },
+            {
+                "value": "Burundi",
+                "alpha_2": "BI",
+                "id": "BDI",
+                "alpha_3": "BDI",
+                "un_code_m49": "108"
+            },
+            {
+                "value": "Cambodia",
+                "alpha_2": "KH",
+                "id": "KHM",
+                "alpha_3": "KHM",
+                "un_code_m49": "116"
+            },
+            {
+                "value": "Cameroon",
+                "alpha_2": "CM",
+                "id": "CMR",
+                "alpha_3": "CMR",
+                "un_code_m49": "120"
+            },
+            {
+                "value": "Canada",
+                "alpha_2": "CA",
+                "id": "CAN",
+                "alpha_3": "CAN",
+                "un_code_m49": "124"
+            },
+            {
+                "value": "Cape Verde",
+                "alpha_2": "CV",
+                "id": "CPV",
+                "alpha_3": "CPV",
+                "un_code_m49": "132"
+            },
+            {
+                "value": "Cayman Islands",
+                "alpha_2": "KY",
+                "id": "CYM",
+                "alpha_3": "CYM",
+                "un_code_m49": "136"
+            },
+            {
+                "value": "Central African Republic",
+                "alpha_2": "CF",
+                "id": "CAF",
+                "alpha_3": "CAF",
+                "un_code_m49": "140"
+            },
+            {
+                "value": "Chad",
+                "alpha_2": "TD",
+                "id": "TCD",
+                "alpha_3": "TCD",
+                "un_code_m49": "148"
+            },
+            {
+                "value": "Chile",
+                "alpha_2": "CL",
+                "id": "CHL",
+                "alpha_3": "CHL",
+                "un_code_m49": "152"
+            },
+            {
+                "value": "China",
+                "alpha_2": "CN",
+                "id": "CHN",
+                "alpha_3": "CHN",
+                "un_code_m49": "156"
+            },
+            {
+                "value": "Hong Kong, SAR China",
+                "alpha_2": "HK",
+                "id": "HKG",
+                "alpha_3": "HKG",
+                "un_code_m49": "344"
+            },
+            {
+                "value": "Macao, SAR China",
+                "alpha_2": "MO",
+                "id": "MAC",
+                "alpha_3": "MAC",
+                "un_code_m49": "446"
+            },
+            {
+                "value": "Christmas Island",
+                "alpha_2": "CX",
+                "id": "CXR",
+                "alpha_3": "CXR",
+                "un_code_m49": "162"
+            },
+            {
+                "value": "Cocos (Keeling) Islands",
+                "alpha_2": "CC",
+                "id": "CCK",
+                "alpha_3": "CCK",
+                "un_code_m49": "166"
+            },
+            {
+                "value": "Colombia",
+                "alpha_2": "CO",
+                "id": "COL",
+                "alpha_3": "COL",
+                "un_code_m49": "170"
+            },
+            {
+                "value": "Comoros",
+                "alpha_2": "KM",
+                "id": "COM",
+                "alpha_3": "COM",
+                "un_code_m49": "174"
+            },
+            {
+                "value": "Congo (Brazzaville)",
+                "alpha_2": "CG",
+                "id": "COG",
+                "alpha_3": "COG",
+                "un_code_m49": "178"
+            },
+            {
+                "value": "Congo, (Kinshasa)",
+                "alpha_2": "CD",
+                "id": "COD",
+                "alpha_3": "COD",
+                "un_code_m49": "180"
+            },
+            {
+                "value": "Cook Islands",
+                "alpha_2": "CK",
+                "id": "COK",
+                "alpha_3": "COK",
+                "un_code_m49": "184"
+            },
+            {
+                "value": "Costa Rica",
+                "alpha_2": "CR",
+                "id": "CRI",
+                "alpha_3": "CRI",
+                "un_code_m49": "188"
+            },
+            {
+                "value": "Côte d'Ivoire",
+                "alpha_2": "CI",
+                "id": "CIV",
+                "alpha_3": "CIV",
+                "un_code_m49": "384"
+            },
+            {
+                "value": "Croatia",
+                "alpha_2": "HR",
+                "id": "HRV",
+                "alpha_3": "HRV",
+                "un_code_m49": "191"
+            },
+            {
+                "value": "Cuba",
+                "alpha_2": "CU",
+                "id": "CUB",
+                "alpha_3": "CUB",
+                "un_code_m49": "192"
+            },
+            {
+                "value": "Cyprus",
+                "alpha_2": "CY",
+                "id": "CYP",
+                "alpha_3": "CYP",
+                "un_code_m49": "196"
+            },
+            {
+                "value": "Czech Republic",
+                "alpha_2": "CZ",
+                "id": "CZE",
+                "alpha_3": "CZE",
+                "un_code_m49": "203"
+            },
+            {
+                "value": "Denmark",
+                "alpha_2": "DK",
+                "id": "DNK",
+                "alpha_3": "DNK",
+                "un_code_m49": "208"
+            },
+            {
+                "value": "Djibouti",
+                "alpha_2": "DJ",
+                "id": "DJI",
+                "alpha_3": "DJI",
+                "un_code_m49": "262"
+            },
+            {
+                "value": "Dominica",
+                "alpha_2": "DM",
+                "id": "DMA",
+                "alpha_3": "DMA",
+                "un_code_m49": "212"
+            },
+            {
+                "value": "Dominican Republic",
+                "alpha_2": "DO",
+                "id": "DOM",
+                "alpha_3": "DOM",
+                "un_code_m49": "214"
+            },
+            {
+                "value": "Ecuador",
+                "alpha_2": "EC",
+                "id": "ECU",
+                "alpha_3": "ECU",
+                "un_code_m49": "218"
+            },
+            {
+                "value": "Egypt",
+                "alpha_2": "EG",
+                "id": "EGY",
+                "alpha_3": "EGY",
+                "un_code_m49": "818"
+            },
+            {
+                "value": "El Salvador",
+                "alpha_2": "SV",
+                "id": "SLV",
+                "alpha_3": "SLV",
+                "un_code_m49": "222"
+            },
+            {
+                "value": "Equatorial Guinea",
+                "alpha_2": "GQ",
+                "id": "GNQ",
+                "alpha_3": "GNQ",
+                "un_code_m49": "226"
+            },
+            {
+                "value": "Eritrea",
+                "alpha_2": "ER",
+                "id": "ERI",
+                "alpha_3": "ERI",
+                "un_code_m49": "232"
+            },
+            {
+                "value": "Estonia",
+                "alpha_2": "EE",
+                "id": "EST",
+                "alpha_3": "EST",
+                "un_code_m49": "233"
+            },
+            {
+                "value": "Ethiopia",
+                "alpha_2": "ET",
+                "id": "ETH",
+                "alpha_3": "ETH",
+                "un_code_m49": "231"
+            },
+            {
+                "value": "Falkland Islands (Malvinas)",
+                "alpha_2": "FK",
+                "id": "FLK",
+                "alpha_3": "FLK",
+                "un_code_m49": "238"
+            },
+            {
+                "value": "Faroe Islands",
+                "alpha_2": "FO",
+                "id": "FRO",
+                "alpha_3": "FRO",
+                "un_code_m49": "234"
+            },
+            {
+                "value": "Fiji",
+                "alpha_2": "FJ",
+                "id": "FJI",
+                "alpha_3": "FJI",
+                "un_code_m49": "242"
+            },
+            {
+                "value": "Finland",
+                "alpha_2": "FI",
+                "id": "FIN",
+                "alpha_3": "FIN",
+                "un_code_m49": "246"
+            },
+            {
+                "value": "France",
+                "alpha_2": "FR",
+                "id": "FRA",
+                "alpha_3": "FRA",
+                "un_code_m49": "250"
+            },
+            {
+                "value": "French Guiana",
+                "alpha_2": "GF",
+                "id": "GUF",
+                "alpha_3": "GUF",
+                "un_code_m49": "254"
+            },
+            {
+                "value": "French Polynesia",
+                "alpha_2": "PF",
+                "id": "PYF",
+                "alpha_3": "PYF",
+                "un_code_m49": "258"
+            },
+            {
+                "value": "French Southern Territories",
+                "alpha_2": "TF",
+                "id": "ATF",
+                "alpha_3": "ATF",
+                "un_code_m49": "260"
+            },
+            {
+                "value": "Gabon",
+                "alpha_2": "GA",
+                "id": "GAB",
+                "alpha_3": "GAB",
+                "un_code_m49": "266"
+            },
+            {
+                "value": "Gambia",
+                "alpha_2": "GM",
+                "id": "GMB",
+                "alpha_3": "GMB",
+                "un_code_m49": "270"
+            },
+            {
+                "value": "Georgia",
+                "alpha_2": "GE",
+                "id": "GEO",
+                "alpha_3": "GEO",
+                "un_code_m49": "268"
+            },
+            {
+                "value": "Germany",
+                "alpha_2": "DE",
+                "id": "DEU",
+                "alpha_3": "DEU",
+                "un_code_m49": "276"
+            },
+            {
+                "value": "Ghana",
+                "alpha_2": "GH",
+                "id": "GHA",
+                "alpha_3": "GHA",
+                "un_code_m49": "288"
+            },
+            {
+                "value": "Gibraltar",
+                "alpha_2": "GI",
+                "id": "GIB",
+                "alpha_3": "GIB",
+                "un_code_m49": "292"
+            },
+            {
+                "value": "Greece",
+                "alpha_2": "GR",
+                "id": "GRC",
+                "alpha_3": "GRC",
+                "un_code_m49": "300"
+            },
+            {
+                "value": "Greenland",
+                "alpha_2": "GL",
+                "id": "GRL",
+                "alpha_3": "GRL",
+                "un_code_m49": "304"
+            },
+            {
+                "value": "Grenada",
+                "alpha_2": "GD",
+                "id": "GRD",
+                "alpha_3": "GRD",
+                "un_code_m49": "308"
+            },
+            {
+                "value": "Guadeloupe",
+                "alpha_2": "GP",
+                "id": "GLP",
+                "alpha_3": "GLP",
+                "un_code_m49": "312"
+            },
+            {
+                "value": "Guam",
+                "alpha_2": "GU",
+                "id": "GUM",
+                "alpha_3": "GUM",
+                "un_code_m49": "316"
+            },
+            {
+                "value": "Guatemala",
+                "alpha_2": "GT",
+                "id": "GTM",
+                "alpha_3": "GTM",
+                "un_code_m49": "320"
+            },
+            {
+                "value": "Guernsey",
+                "alpha_2": "GG",
+                "id": "GGY",
+                "alpha_3": "GGY",
+                "un_code_m49": "831"
+            },
+            {
+                "value": "Guinea",
+                "alpha_2": "GN",
+                "id": "GIN",
+                "alpha_3": "GIN",
+                "un_code_m49": "324"
+            },
+            {
+                "value": "Guinea-Bissau",
+                "alpha_2": "GW",
+                "id": "GNB",
+                "alpha_3": "GNB",
+                "un_code_m49": "624"
+            },
+            {
+                "value": "Guyana",
+                "alpha_2": "GY",
+                "id": "GUY",
+                "alpha_3": "GUY",
+                "un_code_m49": "328"
+            },
+            {
+                "value": "Haiti",
+                "alpha_2": "HT",
+                "id": "HTI",
+                "alpha_3": "HTI",
+                "un_code_m49": "332"
+            },
+            {
+                "value": "Heard and Mcdonald Islands",
+                "alpha_2": "HM",
+                "id": "HMD",
+                "alpha_3": "HMD",
+                "un_code_m49": "334"
+            },
+            {
+                "value": "Holy See (Vatican City State)",
+                "alpha_2": "VA",
+                "id": "VAT",
+                "alpha_3": "VAT",
+                "un_code_m49": "336"
+            },
+            {
+                "value": "Honduras",
+                "alpha_2": "HN",
+                "id": "HND",
+                "alpha_3": "HND",
+                "un_code_m49": "340"
+            },
+            {
+                "value": "Hungary",
+                "alpha_2": "HU",
+                "id": "HUN",
+                "alpha_3": "HUN",
+                "un_code_m49": "348"
+            },
+            {
+                "value": "Iceland",
+                "alpha_2": "IS",
+                "id": "ISL",
+                "alpha_3": "ISL",
+                "un_code_m49": "352"
+            },
+            {
+                "value": "India",
+                "alpha_2": "IN",
+                "id": "IND",
+                "alpha_3": "IND",
+                "un_code_m49": "356"
+            },
+            {
+                "value": "Indonesia",
+                "alpha_2": "ID",
+                "id": "IDN",
+                "alpha_3": "IDN",
+                "un_code_m49": "360"
+            },
+            {
+                "value": "Iran, Islamic Republic of",
+                "alpha_2": "IR",
+                "id": "IRN",
+                "alpha_3": "IRN",
+                "un_code_m49": "364"
+            },
+            {
+                "value": "Iraq",
+                "alpha_2": "IQ",
+                "id": "IRQ",
+                "alpha_3": "IRQ",
+                "un_code_m49": "368"
+            },
+            {
+                "value": "Ireland",
+                "alpha_2": "IE",
+                "id": "IRL",
+                "alpha_3": "IRL",
+                "un_code_m49": "372"
+            },
+            {
+                "value": "Isle of Man",
+                "alpha_2": "IM",
+                "id": "IMN",
+                "alpha_3": "IMN",
+                "un_code_m49": "833"
+            },
+            {
+                "value": "Israel",
+                "alpha_2": "IL",
+                "id": "ISR",
+                "alpha_3": "ISR",
+                "un_code_m49": "376"
+            },
+            {
+                "value": "Italy",
+                "alpha_2": "IT",
+                "id": "ITA",
+                "alpha_3": "ITA",
+                "un_code_m49": "380"
+            },
+            {
+                "value": "Jamaica",
+                "alpha_2": "JM",
+                "id": "JAM",
+                "alpha_3": "JAM",
+                "un_code_m49": "388"
+            },
+            {
+                "value": "Japan",
+                "alpha_2": "JP",
+                "id": "JPN",
+                "alpha_3": "JPN",
+                "un_code_m49": "392"
+            },
+            {
+                "value": "Jersey",
+                "alpha_2": "JE",
+                "id": "JEY",
+                "alpha_3": "JEY",
+                "un_code_m49": "832"
+            },
+            {
+                "value": "Jordan",
+                "alpha_2": "JO",
+                "id": "JOR",
+                "alpha_3": "JOR",
+                "un_code_m49": "400"
+            },
+            {
+                "value": "Kazakhstan",
+                "alpha_2": "KZ",
+                "id": "KAZ",
+                "alpha_3": "KAZ",
+                "un_code_m49": "398"
+            },
+            {
+                "value": "Kenya",
+                "alpha_2": "KE",
+                "id": "KEN",
+                "alpha_3": "KEN",
+                "un_code_m49": "404"
+            },
+            {
+                "value": "Kiribati",
+                "alpha_2": "KI",
+                "id": "KIR",
+                "alpha_3": "KIR",
+                "un_code_m49": "296"
+            },
+            {
+                "value": "Korea (North)",
+                "alpha_2": "KP",
+                "id": "PRK",
+                "alpha_3": "PRK",
+                "un_code_m49": "408"
+            },
+            {
+                "value": "Korea (South)",
+                "alpha_2": "KR",
+                "id": "KOR",
+                "alpha_3": "KOR",
+                "un_code_m49": "410"
+            },
+            {
+                "value": "Kuwait",
+                "alpha_2": "KW",
+                "id": "KWT",
+                "alpha_3": "KWT",
+                "un_code_m49": "414"
+            },
+            {
+                "value": "Kyrgyzstan",
+                "alpha_2": "KG",
+                "id": "KGZ",
+                "alpha_3": "KGZ",
+                "un_code_m49": "417"
+            },
+            {
+                "value": "Lao PDR",
+                "alpha_2": "LA",
+                "id": "LAO",
+                "alpha_3": "LAO",
+                "un_code_m49": "418"
+            },
+            {
+                "value": "Latvia",
+                "alpha_2": "LV",
+                "id": "LVA",
+                "alpha_3": "LVA",
+                "un_code_m49": "428"
+            },
+            {
+                "value": "Lebanon",
+                "alpha_2": "LB",
+                "id": "LBN",
+                "alpha_3": "LBN",
+                "un_code_m49": "422"
+            },
+            {
+                "value": "Lesotho",
+                "alpha_2": "LS",
+                "id": "LSO",
+                "alpha_3": "LSO",
+                "un_code_m49": "426"
+            },
+            {
+                "value": "Liberia",
+                "alpha_2": "LR",
+                "id": "LBR",
+                "alpha_3": "LBR",
+                "un_code_m49": "430"
+            },
+            {
+                "value": "Libya",
+                "alpha_2": "LY",
+                "id": "LBY",
+                "alpha_3": "LBY",
+                "un_code_m49": "434"
+            },
+            {
+                "value": "Liechtenstein",
+                "alpha_2": "LI",
+                "id": "LIE",
+                "alpha_3": "LIE",
+                "un_code_m49": "438"
+            },
+            {
+                "value": "Lithuania",
+                "alpha_2": "LT",
+                "id": "LTU",
+                "alpha_3": "LTU",
+                "un_code_m49": "440"
+            },
+            {
+                "value": "Luxembourg",
+                "alpha_2": "LU",
+                "id": "LUX",
+                "alpha_3": "LUX",
+                "un_code_m49": "442"
+            },
+            {
+                "value": "Macedonia, Republic of",
+                "alpha_2": "MK",
+                "id": "MKD",
+                "alpha_3": "MKD",
+                "un_code_m49": "807"
+            },
+            {
+                "value": "Madagascar",
+                "alpha_2": "MG",
+                "id": "MDG",
+                "alpha_3": "MDG",
+                "un_code_m49": "450"
+            },
+            {
+                "value": "Malawi",
+                "alpha_2": "MW",
+                "id": "MWI",
+                "alpha_3": "MWI",
+                "un_code_m49": "454"
+            },
+            {
+                "value": "Malaysia",
+                "alpha_2": "MY",
+                "id": "MYS",
+                "alpha_3": "MYS",
+                "un_code_m49": "458"
+            },
+            {
+                "value": "Maldives",
+                "alpha_2": "MV",
+                "id": "MDV",
+                "alpha_3": "MDV",
+                "un_code_m49": "462"
+            },
+            {
+                "value": "Mali",
+                "alpha_2": "ML",
+                "id": "MLI",
+                "alpha_3": "MLI",
+                "un_code_m49": "466"
+            },
+            {
+                "value": "Malta",
+                "alpha_2": "MT",
+                "id": "MLT",
+                "alpha_3": "MLT",
+                "un_code_m49": "470"
+            },
+            {
+                "value": "Marshall Islands",
+                "alpha_2": "MH",
+                "id": "MHL",
+                "alpha_3": "MHL",
+                "un_code_m49": "584"
+            },
+            {
+                "value": "Martinique",
+                "alpha_2": "MQ",
+                "id": "MTQ",
+                "alpha_3": "MTQ",
+                "un_code_m49": "474"
+            },
+            {
+                "value": "Mauritania",
+                "alpha_2": "MR",
+                "id": "MRT",
+                "alpha_3": "MRT",
+                "un_code_m49": "478"
+            },
+            {
+                "value": "Mauritius",
+                "alpha_2": "MU",
+                "id": "MUS",
+                "alpha_3": "MUS",
+                "un_code_m49": "480"
+            },
+            {
+                "value": "Mayotte",
+                "alpha_2": "YT",
+                "id": "MYT",
+                "alpha_3": "MYT",
+                "un_code_m49": "175"
+            },
+            {
+                "value": "Mexico",
+                "alpha_2": "MX",
+                "id": "MEX",
+                "alpha_3": "MEX",
+                "un_code_m49": "484"
+            },
+            {
+                "value": "Micronesia, Federated States of",
+                "alpha_2": "FM",
+                "id": "FSM",
+                "alpha_3": "FSM",
+                "un_code_m49": "583"
+            },
+            {
+                "value": "Moldova",
+                "alpha_2": "MD",
+                "id": "MDA",
+                "alpha_3": "MDA",
+                "un_code_m49": "498"
+            },
+            {
+                "value": "Monaco",
+                "alpha_2": "MC",
+                "id": "MCO",
+                "alpha_3": "MCO",
+                "un_code_m49": "492"
+            },
+            {
+                "value": "Mongolia",
+                "alpha_2": "MN",
+                "id": "MNG",
+                "alpha_3": "MNG",
+                "un_code_m49": "496"
+            },
+            {
+                "value": "Montenegro",
+                "alpha_2": "ME",
+                "id": "MNE",
+                "alpha_3": "MNE",
+                "un_code_m49": "499"
+            },
+            {
+                "value": "Montserrat",
+                "alpha_2": "MS",
+                "id": "MSR",
+                "alpha_3": "MSR",
+                "un_code_m49": "500"
+            },
+            {
+                "value": "Morocco",
+                "alpha_2": "MA",
+                "id": "MAR",
+                "alpha_3": "MAR",
+                "un_code_m49": "504"
+            },
+            {
+                "value": "Mozambique",
+                "alpha_2": "MZ",
+                "id": "MOZ",
+                "alpha_3": "MOZ",
+                "un_code_m49": "508"
+            },
+            {
+                "value": "Myanmar",
+                "alpha_2": "MM",
+                "id": "MMR",
+                "alpha_3": "MMR",
+                "un_code_m49": "104"
+            },
+            {
+                "value": "Namibia",
+                "alpha_2": "NA",
+                "id": "NAM",
+                "alpha_3": "NAM",
+                "un_code_m49": "516"
+            },
+            {
+                "value": "Nauru",
+                "alpha_2": "NR",
+                "id": "NRU",
+                "alpha_3": "NRU",
+                "un_code_m49": "520"
+            },
+            {
+                "value": "Nepal",
+                "alpha_2": "NP",
+                "id": "NPL",
+                "alpha_3": "NPL",
+                "un_code_m49": "524"
+            },
+            {
+                "value": "Netherlands",
+                "alpha_2": "NL",
+                "id": "NLD",
+                "alpha_3": "NLD",
+                "un_code_m49": "528"
+            },
+            {
+                "value": "Netherlands Antilles",
+                "alpha_2": "AN",
+                "id": "ANT",
+                "alpha_3": "ANT",
+                "un_code_m49": "530"
+            },
+            {
+                "value": "New Caledonia",
+                "alpha_2": "NC",
+                "id": "NCL",
+                "alpha_3": "NCL",
+                "un_code_m49": "540"
+            },
+            {
+                "value": "New Zealand",
+                "alpha_2": "NZ",
+                "id": "NZL",
+                "alpha_3": "NZL",
+                "un_code_m49": "554"
+            },
+            {
+                "value": "Nicaragua",
+                "alpha_2": "NI",
+                "id": "NIC",
+                "alpha_3": "NIC",
+                "un_code_m49": "558"
+            },
+            {
+                "value": "Niger",
+                "alpha_2": "NE",
+                "id": "NER",
+                "alpha_3": "NER",
+                "un_code_m49": "562"
+            },
+            {
+                "value": "Nigeria",
+                "alpha_2": "NG",
+                "id": "NGA",
+                "alpha_3": "NGA",
+                "un_code_m49": "566"
+            },
+            {
+                "value": "Niue",
+                "alpha_2": "NU",
+                "id": "NIU",
+                "alpha_3": "NIU",
+                "un_code_m49": "570"
+            },
+            {
+                "value": "Norfolk Island",
+                "alpha_2": "NF",
+                "id": "NFK",
+                "alpha_3": "NFK",
+                "un_code_m49": "574"
+            },
+            {
+                "value": "Northern Mariana Islands",
+                "alpha_2": "MP",
+                "id": "MNP",
+                "alpha_3": "MNP",
+                "un_code_m49": "580"
+            },
+            {
+                "value": "Norway",
+                "alpha_2": "NO",
+                "id": "NOR",
+                "alpha_3": "NOR",
+                "un_code_m49": "578"
+            },
+            {
+                "value": "Oman",
+                "alpha_2": "OM",
+                "id": "OMN",
+                "alpha_3": "OMN",
+                "un_code_m49": "512"
+            },
+            {
+                "value": "Pakistan",
+                "alpha_2": "PK",
+                "id": "PAK",
+                "alpha_3": "PAK",
+                "un_code_m49": "586"
+            },
+            {
+                "value": "Palau",
+                "alpha_2": "PW",
+                "id": "PLW",
+                "alpha_3": "PLW",
+                "un_code_m49": "585"
+            },
+            {
+                "value": "Palestinian Territory",
+                "alpha_2": "PS",
+                "id": "PSE",
+                "alpha_3": "PSE",
+                "un_code_m49": "275"
+            },
+            {
+                "value": "Panama",
+                "alpha_2": "PA",
+                "id": "PAN",
+                "alpha_3": "PAN",
+                "un_code_m49": "591"
+            },
+            {
+                "value": "Papua New Guinea",
+                "alpha_2": "PG",
+                "id": "PNG",
+                "alpha_3": "PNG",
+                "un_code_m49": "598"
+            },
+            {
+                "value": "Paraguay",
+                "alpha_2": "PY",
+                "id": "PRY",
+                "alpha_3": "PRY",
+                "un_code_m49": "600"
+            },
+            {
+                "value": "Peru",
+                "alpha_2": "PE",
+                "id": "PER",
+                "alpha_3": "PER",
+                "un_code_m49": "604"
+            },
+            {
+                "value": "Philippines",
+                "alpha_2": "PH",
+                "id": "PHL",
+                "alpha_3": "PHL",
+                "un_code_m49": "608"
+            },
+            {
+                "value": "Pitcairn",
+                "alpha_2": "PN",
+                "id": "PCN",
+                "alpha_3": "PCN",
+                "un_code_m49": "612"
+            },
+            {
+                "value": "Poland",
+                "alpha_2": "PL",
+                "id": "POL",
+                "alpha_3": "POL",
+                "un_code_m49": "616"
+            },
+            {
+                "value": "Portugal",
+                "alpha_2": "PT",
+                "id": "PRT",
+                "alpha_3": "PRT",
+                "un_code_m49": "620"
+            },
+            {
+                "value": "Puerto Rico",
+                "alpha_2": "PR",
+                "id": "PRI",
+                "alpha_3": "PRI",
+                "un_code_m49": "630"
+            },
+            {
+                "value": "Qatar",
+                "alpha_2": "QA",
+                "id": "QAT",
+                "alpha_3": "QAT",
+                "un_code_m49": "634"
+            },
+            {
+                "value": "Réunion",
+                "alpha_2": "RE",
+                "id": "REU",
+                "alpha_3": "REU",
+                "un_code_m49": "638"
+            },
+            {
+                "value": "Romania",
+                "alpha_2": "RO",
+                "id": "ROU",
+                "alpha_3": "ROU",
+                "un_code_m49": "642"
+            },
+            {
+                "value": "Russian Federation",
+                "alpha_2": "RU",
+                "id": "RUS",
+                "alpha_3": "RUS",
+                "un_code_m49": "643"
+            },
+            {
+                "value": "Rwanda",
+                "alpha_2": "RW",
+                "id": "RWA",
+                "alpha_3": "RWA",
+                "un_code_m49": "646"
+            },
+            {
+                "value": "Saint-Barthélemy",
+                "alpha_2": "BL",
+                "id": "BLM",
+                "alpha_3": "BLM",
+                "un_code_m49": "652"
+            },
+            {
+                "value": "Saint Helena",
+                "alpha_2": "SH",
+                "id": "SHN",
+                "alpha_3": "SHN",
+                "un_code_m49": "654"
+            },
+            {
+                "value": "Saint Kitts and Nevis",
+                "alpha_2": "KN",
+                "id": "KNA",
+                "alpha_3": "KNA",
+                "un_code_m49": "659"
+            },
+            {
+                "value": "Saint Lucia",
+                "alpha_2": "LC",
+                "id": "LCA",
+                "alpha_3": "LCA",
+                "un_code_m49": "662"
+            },
+            {
+                "value": "Saint-Martin (French part)",
+                "alpha_2": "MF",
+                "id": "MAF",
+                "alpha_3": "MAF",
+                "un_code_m49": "663"
+            },
+            {
+                "value": "Saint Pierre and Miquelon",
+                "alpha_2": "PM",
+                "id": "SPM",
+                "alpha_3": "SPM",
+                "un_code_m49": "666"
+            },
+            {
+                "value": "Saint Vincent and Grenadines",
+                "alpha_2": "VC",
+                "id": "VCT",
+                "alpha_3": "VCT",
+                "un_code_m49": "670"
+            },
+            {
+                "value": "Samoa",
+                "alpha_2": "WS",
+                "id": "WSM",
+                "alpha_3": "WSM",
+                "un_code_m49": "882"
+            },
+            {
+                "value": "San Marino",
+                "alpha_2": "SM",
+                "id": "SMR",
+                "alpha_3": "SMR",
+                "un_code_m49": "674"
+            },
+            {
+                "value": "Sao Tome and Principe",
+                "alpha_2": "ST",
+                "id": "STP",
+                "alpha_3": "STP",
+                "un_code_m49": "678"
+            },
+            {
+                "value": "Saudi Arabia",
+                "alpha_2": "SA",
+                "id": "SAU",
+                "alpha_3": "SAU",
+                "un_code_m49": "682"
+            },
+            {
+                "value": "Senegal",
+                "alpha_2": "SN",
+                "id": "SEN",
+                "alpha_3": "SEN",
+                "un_code_m49": "686"
+            },
+            {
+                "value": "Serbia",
+                "alpha_2": "RS",
+                "id": "SRB",
+                "alpha_3": "SRB",
+                "un_code_m49": "688"
+            },
+            {
+                "value": "Seychelles",
+                "alpha_2": "SC",
+                "id": "SYC",
+                "alpha_3": "SYC",
+                "un_code_m49": "690"
+            },
+            {
+                "value": "Sierra Leone",
+                "alpha_2": "SL",
+                "id": "SLE",
+                "alpha_3": "SLE",
+                "un_code_m49": "694"
+            },
+            {
+                "value": "Singapore",
+                "alpha_2": "SG",
+                "id": "SGP",
+                "alpha_3": "SGP",
+                "un_code_m49": "702"
+            },
+            {
+                "value": "Slovakia",
+                "alpha_2": "SK",
+                "id": "SVK",
+                "alpha_3": "SVK",
+                "un_code_m49": "703"
+            },
+            {
+                "value": "Slovenia",
+                "alpha_2": "SI",
+                "id": "SVN",
+                "alpha_3": "SVN",
+                "un_code_m49": "705"
+            },
+            {
+                "value": "Solomon Islands",
+                "alpha_2": "SB",
+                "id": "SLB",
+                "alpha_3": "SLB",
+                "un_code_m49": "090"
+            },
+            {
+                "value": "Somalia",
+                "alpha_2": "SO",
+                "id": "SOM",
+                "alpha_3": "SOM",
+                "un_code_m49": "706"
+            },
+            {
+                "value": "South Africa",
+                "alpha_2": "ZA",
+                "id": "ZAF",
+                "alpha_3": "ZAF",
+                "un_code_m49": "710"
+            },
+            {
+                "value": "South Georgia and the South Sandwich Islands",
+                "alpha_2": "GS",
+                "id": "SGS",
+                "alpha_3": "SGS",
+                "un_code_m49": "239"
+            },
+            {
+                "value": "South Sudan",
+                "alpha_2": "SS",
+                "id": "SSD",
+                "alpha_3": "SSD",
+                "un_code_m49": "728"
+            },
+            {
+                "value": "Spain",
+                "alpha_2": "ES",
+                "id": "ESP",
+                "alpha_3": "ESP",
+                "un_code_m49": "724"
+            },
+            {
+                "value": "Sri Lanka",
+                "alpha_2": "LK",
+                "id": "LKA",
+                "alpha_3": "LKA",
+                "un_code_m49": "144"
+            },
+            {
+                "value": "Sudan",
+                "alpha_2": "SD",
+                "id": "SDN",
+                "alpha_3": "SDN",
+                "un_code_m49": "736"
+            },
+            {
+                "value": "Suriname",
+                "alpha_2": "SR",
+                "id": "SUR",
+                "alpha_3": "SUR",
+                "un_code_m49": "740"
+            },
+            {
+                "value": "Svalbard and Jan Mayen Islands",
+                "alpha_2": "SJ",
+                "id": "SJM",
+                "alpha_3": "SJM",
+                "un_code_m49": "744"
+            },
+            {
+                "value": "Swaziland",
+                "alpha_2": "SZ",
+                "id": "SWZ",
+                "alpha_3": "SWZ",
+                "un_code_m49": "748"
+            },
+            {
+                "value": "Sweden",
+                "alpha_2": "SE",
+                "id": "SWE",
+                "alpha_3": "SWE",
+                "un_code_m49": "752"
+            },
+            {
+                "value": "Switzerland",
+                "alpha_2": "CH",
+                "id": "CHE",
+                "alpha_3": "CHE",
+                "un_code_m49": "756"
+            },
+            {
+                "value": "Syrian Arab Republic (Syria)",
+                "alpha_2": "SY",
+                "id": "SYR",
+                "alpha_3": "SYR",
+                "un_code_m49": "760"
+            },
+            {
+                "value": "Taiwan, Republic of China",
+                "alpha_2": "TW",
+                "id": "TWN",
+                "alpha_3": "TWN",
+                "un_code_m49": "158"
+            },
+            {
+                "value": "Tajikistan",
+                "alpha_2": "TJ",
+                "id": "TJK",
+                "alpha_3": "TJK",
+                "un_code_m49": "762"
+            },
+            {
+                "value": "Tanzania, United Republic of",
+                "alpha_2": "TZ",
+                "id": "TZA",
+                "alpha_3": "TZA",
+                "un_code_m49": "834"
+            },
+            {
+                "value": "Thailand",
+                "alpha_2": "TH",
+                "id": "THA",
+                "alpha_3": "THA",
+                "un_code_m49": "764"
+            },
+            {
+                "value": "Timor-Leste",
+                "alpha_2": "TL",
+                "id": "TLS",
+                "alpha_3": "TLS",
+                "un_code_m49": "626"
+            },
+            {
+                "value": "Togo",
+                "alpha_2": "TG",
+                "id": "TGO",
+                "alpha_3": "TGO",
+                "un_code_m49": "768"
+            },
+            {
+                "value": "Tokelau",
+                "alpha_2": "TK",
+                "id": "TKL",
+                "alpha_3": "TKL",
+                "un_code_m49": "772"
+            },
+            {
+                "value": "Tonga",
+                "alpha_2": "TO",
+                "id": "TON",
+                "alpha_3": "TON",
+                "un_code_m49": "776"
+            },
+            {
+                "value": "Trinidad and Tobago",
+                "alpha_2": "TT",
+                "id": "TTO",
+                "alpha_3": "TTO",
+                "un_code_m49": "780"
+            },
+            {
+                "value": "Tunisia",
+                "alpha_2": "TN",
+                "id": "TUN",
+                "alpha_3": "TUN",
+                "un_code_m49": "788"
+            },
+            {
+                "value": "Turkey",
+                "alpha_2": "TR",
+                "id": "TUR",
+                "alpha_3": "TUR",
+                "un_code_m49": "792"
+            },
+            {
+                "value": "Turkmenistan",
+                "alpha_2": "TM",
+                "id": "TKM",
+                "alpha_3": "TKM",
+                "un_code_m49": "795"
+            },
+            {
+                "value": "Turks and Caicos Islands",
+                "alpha_2": "TC",
+                "id": "TCA",
+                "alpha_3": "TCA",
+                "un_code_m49": "796"
+            },
+            {
+                "value": "Tuvalu",
+                "alpha_2": "TV",
+                "id": "TUV",
+                "alpha_3": "TUV",
+                "un_code_m49": "798"
+            },
+            {
+                "value": "Uganda",
+                "alpha_2": "UG",
+                "id": "UGA",
+                "alpha_3": "UGA",
+                "un_code_m49": "800"
+            },
+            {
+                "value": "Ukraine",
+                "alpha_2": "UA",
+                "id": "UKR",
+                "alpha_3": "UKR",
+                "un_code_m49": "804"
+            },
+            {
+                "value": "United Arab Emirates",
+                "alpha_2": "AE",
+                "id": "ARE",
+                "alpha_3": "ARE",
+                "un_code_m49": "784"
+            },
+            {
+                "value": "United Kingdom",
+                "alpha_2": "GB",
+                "id": "GBR",
+                "alpha_3": "GBR",
+                "un_code_m49": "826"
+            },
+            {
+                "value": "United States of America",
+                "alpha_2": "US",
+                "id": "USA",
+                "alpha_3": "USA",
+                "un_code_m49": "840"
+            },
+            {
+                "value": "US Minor Outlying Islands",
+                "alpha_2": "UM",
+                "id": "UMI",
+                "alpha_3": "UMI",
+                "un_code_m49": "581"
+            },
+            {
+                "value": "Uruguay",
+                "alpha_2": "UY",
+                "id": "URY",
+                "alpha_3": "URY",
+                "un_code_m49": "858"
+            },
+            {
+                "value": "Uzbekistan",
+                "alpha_2": "UZ",
+                "id": "UZB",
+                "alpha_3": "UZB",
+                "un_code_m49": "860"
+            },
+            {
+                "value": "Vanuatu",
+                "alpha_2": "VU",
+                "id": "VUT",
+                "alpha_3": "VUT",
+                "un_code_m49": "548"
+            },
+            {
+                "value": "Venezuela (Bolivarian Republic)",
+                "alpha_2": "VE",
+                "id": "VEN",
+                "alpha_3": "VEN",
+                "un_code_m49": "862"
+            },
+            {
+                "value": "Viet Nam",
+                "alpha_2": "VN",
+                "id": "VNM",
+                "alpha_3": "VNM",
+                "un_code_m49": "704"
+            },
+            {
+                "value": "Virgin Islands, US",
+                "alpha_2": "VI",
+                "id": "VIR",
+                "alpha_3": "VIR",
+                "un_code_m49": "850"
+            },
+            {
+                "value": "Wallis and Futuna Islands",
+                "alpha_2": "WF",
+                "id": "WLF",
+                "alpha_3": "WLF",
+                "un_code_m49": "876"
+            },
+            {
+                "value": "Western Sahara",
+                "alpha_2": "EH",
+                "id": "ESH",
+                "alpha_3": "ESH",
+                "un_code_m49": "732"
+            },
+            {
+                "value": "Yemen",
+                "alpha_2": "YE",
+                "id": "YEM",
+                "alpha_3": "YEM",
+                "un_code_m49": "887"
+            },
+            {
+                "value": "Zambia",
+                "alpha_2": "ZM",
+                "id": "ZMB",
+                "alpha_3": "ZMB",
+                "un_code_m49": "894"
+            },
+            {
+                "value": "Zimbabwe",
+                "alpha_2": "ZW",
+                "id": "ZWE",
+                "alpha_3": "ZWE",
+                "un_code_m49": "716"
+            }
+        ],
+        "currencies": [
+            {
+                "id": "VND",
+                "value": "Vietnam Dong"
+            },
+            {
+                "id": "SGD",
+                "value": "Singapore Dollar"
+            },
+            {
+                "id": "USD",
+                "value": "US Dollar"
+            },
+            {
+                "id": "EUR",
+                "value": "Euro"
+            },
+            {
+                "id": "AUD",
+                "value": "Australian Dollar"
+            },
+            {
+                "id": "CNY",
+                "value": "Renminbi (Yuan)"
+            }
+        ],
+        "languages": [
+            {
+                "id": "vi",
+                "value": "Vietnamese"
+            },
+            {
+                "id": "en",
+                "value": "English"
+            }
+        ],
+        "timezone": [
+            {
+                "id": "Asia\/Singapore",
+                "value": "GMT+8 Asia\/Singapore"
+            },
+            {
+                "id": "Asia\/Ho_Chi_Minh",
+                "value": "GMT+7 Asia\/Ho_Chi_Minh"
+            }
+        ],
+        "price_options": {
+            "type": [
+                "normal",
+                "peak",
+                "off-peak"
+            ],
+            "unit": [
+                "hourly",
+                "daily",
+                "nightly",
+                "weekly",
+                "monthly",
+                "quarterly",
+                "yearly"
+            ],
+            "available_at": [
+                "all",
+                "hourInDay",
+                "dateInWeek",
+                "dateInYear",
+                "monthInYear",
+                "customDate",
+                "customMonth"
+            ]
+        }
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/asset/system/info</code></p>
+<!-- END_4b9cbc8a5180be935252eedd023fb313 -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>
