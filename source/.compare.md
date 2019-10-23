@@ -572,17 +572,17 @@ fetch(url, {
 #Building
 
 
-<!-- START_96f462801e77889adc64a5828f7f654e -->
-## api/asset/building/add
+<!-- START_892b79d6f385b8e405c8d8baedd2a7dd -->
+## api/org/building/add
 > Example request:
 
 ```bash
-curl -X POST "/api/asset/building/add" \
+curl -X POST "/api/org/building/add" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/building/add");
+const url = new URL("/api/org/building/add");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -601,22 +601,22 @@ fetch(url, {
 
 
 ### HTTP Request
-`POST api/asset/building/add`
+`POST api/org/building/add`
 
 
-<!-- END_96f462801e77889adc64a5828f7f654e -->
+<!-- END_892b79d6f385b8e405c8d8baedd2a7dd -->
 
-<!-- START_35cd7ad9c04f2e207a5f60d7d409e6c2 -->
-## api/asset/building/update
+<!-- START_6fc934d7502e3f53f2d7ea7bee8aac5b -->
+## api/org/building/update
 > Example request:
 
 ```bash
-curl -X POST "/api/asset/building/update" \
+curl -X POST "/api/org/building/update" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/building/update");
+const url = new URL("/api/org/building/update");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -635,22 +635,22 @@ fetch(url, {
 
 
 ### HTTP Request
-`POST api/asset/building/update`
+`POST api/org/building/update`
 
 
-<!-- END_35cd7ad9c04f2e207a5f60d7d409e6c2 -->
+<!-- END_6fc934d7502e3f53f2d7ea7bee8aac5b -->
 
-<!-- START_f6a89b0eeb60a5467bdea969bc1d64b6 -->
-## api/asset/building/{building}
+<!-- START_bc6b8a0f8026f64c4147f9c46aa18055 -->
+## api/org/building/{building}
 > Example request:
 
 ```bash
-curl -X GET -G "/api/asset/building/1" \
+curl -X GET -G "/api/org/building/1" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/building/1");
+const url = new URL("/api/org/building/1");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -676,10 +676,10 @@ fetch(url, {
 ```
 
 ### HTTP Request
-`GET api/asset/building/{building}`
+`GET api/org/building/{building}`
 
 
-<!-- END_f6a89b0eeb60a5467bdea969bc1d64b6 -->
+<!-- END_bc6b8a0f8026f64c4147f9c46aa18055 -->
 
 #Core\Category
 
@@ -813,17 +813,17 @@ fetch(url, {
 #Floor
 
 
-<!-- START_24f54df06ecff7774931febfd343685f -->
-## api/asset/floor/add
+<!-- START_fdb0bbae1a78810ead30f4e9334987e5 -->
+## api/org/floor/add
 > Example request:
 
 ```bash
-curl -X POST "/api/asset/floor/add" \
+curl -X POST "/api/org/floor/add" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/floor/add");
+const url = new URL("/api/org/floor/add");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -842,22 +842,22 @@ fetch(url, {
 
 
 ### HTTP Request
-`POST api/asset/floor/add`
+`POST api/org/floor/add`
 
 
-<!-- END_24f54df06ecff7774931febfd343685f -->
+<!-- END_fdb0bbae1a78810ead30f4e9334987e5 -->
 
-<!-- START_f1fc28059512b554f311bfde5ce9b75e -->
-## api/asset/floor/update
+<!-- START_c6b7dd807f4a7b95a5a92c8541118e1c -->
+## api/org/floor/update
 > Example request:
 
 ```bash
-curl -X POST "/api/asset/floor/update" \
+curl -X POST "/api/org/floor/update" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/floor/update");
+const url = new URL("/api/org/floor/update");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -876,22 +876,22 @@ fetch(url, {
 
 
 ### HTTP Request
-`POST api/asset/floor/update`
+`POST api/org/floor/update`
 
 
-<!-- END_f1fc28059512b554f311bfde5ce9b75e -->
+<!-- END_c6b7dd807f4a7b95a5a92c8541118e1c -->
 
-<!-- START_15732f7c4377da963dc2063c1a02fe06 -->
-## api/asset/floor/{floor}
+<!-- START_daa66572aa4b38fb4d21f7e056ec4294 -->
+## api/org/floor/{floor}
 > Example request:
 
 ```bash
-curl -X GET -G "/api/asset/floor/1" \
+curl -X GET -G "/api/org/floor/1" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/floor/1");
+const url = new URL("/api/org/floor/1");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -917,25 +917,25 @@ fetch(url, {
 ```
 
 ### HTTP Request
-`GET api/asset/floor/{floor}`
+`GET api/org/floor/{floor}`
 
 
-<!-- END_15732f7c4377da963dc2063c1a02fe06 -->
+<!-- END_daa66572aa4b38fb4d21f7e056ec4294 -->
 
 #Organization
 
 
-<!-- START_becf1d7d7aee0b90b341b75fe3ef5abc -->
-## api/asset/organization/add
+<!-- START_7ce948adc9073b23fd93721521b455ee -->
+## api/org/add
 > Example request:
 
 ```bash
-curl -X POST "/api/asset/organization/add" \
+curl -X POST "/api/org/add" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/organization/add");
+const url = new URL("/api/org/add");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -954,22 +954,22 @@ fetch(url, {
 
 
 ### HTTP Request
-`POST api/asset/organization/add`
+`POST api/org/add`
 
 
-<!-- END_becf1d7d7aee0b90b341b75fe3ef5abc -->
+<!-- END_7ce948adc9073b23fd93721521b455ee -->
 
-<!-- START_5199ad5144e0378bc80269d80bbfd7ca -->
-## api/asset/organization/update
+<!-- START_0595a2a117b019d5e4383da424b8b671 -->
+## api/org/update
 > Example request:
 
 ```bash
-curl -X POST "/api/asset/organization/update" \
+curl -X POST "/api/org/update" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/organization/update");
+const url = new URL("/api/org/update");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -988,22 +988,22 @@ fetch(url, {
 
 
 ### HTTP Request
-`POST api/asset/organization/update`
+`POST api/org/update`
 
 
-<!-- END_5199ad5144e0378bc80269d80bbfd7ca -->
+<!-- END_0595a2a117b019d5e4383da424b8b671 -->
 
-<!-- START_b45038ce33583d3303b99b42a6c651c3 -->
-## api/asset/organization/{org}
+<!-- START_a2610a5f2ca50e55ae8da7ba04767337 -->
+## api/org/{org}
 > Example request:
 
 ```bash
-curl -X GET -G "/api/asset/organization/1" \
+curl -X GET -G "/api/org/1" \
     -H "Authorization: Bearer {token}"
 ```
 
 ```javascript
-const url = new URL("/api/asset/organization/1");
+const url = new URL("/api/org/1");
 
 let headers = {
     "Authorization": "Bearer {token}",
@@ -1029,44 +1029,10 @@ fetch(url, {
 ```
 
 ### HTTP Request
-`GET api/asset/organization/{org}`
+`GET api/org/{org}`
 
 
-<!-- END_b45038ce33583d3303b99b42a6c651c3 -->
-
-<!-- START_1145b04323917f337557518cc4736b8b -->
-## api/asset/customers
-> Example request:
-
-```bash
-curl -X POST "/api/asset/customers" \
-    -H "Authorization: Bearer {token}"
-```
-
-```javascript
-const url = new URL("/api/asset/customers");
-
-let headers = {
-    "Authorization": "Bearer {token}",
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/asset/customers`
-
-
-<!-- END_1145b04323917f337557518cc4736b8b -->
+<!-- END_a2610a5f2ca50e55ae8da7ba04767337 -->
 
 #Price
 
