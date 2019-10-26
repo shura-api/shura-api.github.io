@@ -925,27 +925,43 @@ fetch(url, {
 #Organization
 
 
-<!-- START_7ce948adc9073b23fd93721521b455ee -->
-## api/org/add
+<!-- START_7707f56c225da8b675d57a30764a2857 -->
+## Add new organization
+User can add new asset
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
-curl -X POST "/api/org/add" \
-    -H "Authorization: Bearer {token}"
+curl -X POST "/api/org" \
+    -H "Authorization: Bearer {token}" \
+    -H "Content-Type: application/json" \
+    -d '{"name":"The company A","location":"published","currency":"Vietnam","language":"USD","timezone":"pariatur","logo":10}'
+
 ```
 
 ```javascript
-const url = new URL("/api/org/add");
+const url = new URL("/api/org");
 
 let headers = {
     "Authorization": "Bearer {token}",
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "name": "The company A",
+    "location": "published",
+    "currency": "Vietnam",
+    "language": "USD",
+    "timezone": "pariatur",
+    "logo": 10
 }
 
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -954,17 +970,30 @@ fetch(url, {
 
 
 ### HTTP Request
-`POST api/org/add`
+`POST api/org`
 
+#### Body Parameters
 
-<!-- END_7ce948adc9073b23fd93721521b455ee -->
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  optional  | require The name of asset
+    location | string |  optional  | require The location, selected in list  
+    currency | string |  optional  | require selected in list  
+    language | string |  optional  | option Selected in list  
+    timezone | string |  optional  | option Selected in list   Example:
+    logo | integer |  optional  | option And Id of media object 
 
-<!-- START_0595a2a117b019d5e4383da424b8b671 -->
-## api/org/update
+<!-- END_7707f56c225da8b675d57a30764a2857 -->
+
+<!-- START_422f74d86f0bc1771f07e53d069ae5a4 -->
+## update Organization Detail
+User can update organization info
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
-curl -X POST "/api/org/update" \
+curl -X PUT "/api/org/update" \
     -H "Authorization: Bearer {token}"
 ```
 
@@ -978,7 +1007,7 @@ let headers = {
 }
 
 fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: headers,
 })
     .then(response => response.json())
@@ -988,13 +1017,16 @@ fetch(url, {
 
 
 ### HTTP Request
-`POST api/org/update`
+`PUT api/org/update`
 
 
-<!-- END_0595a2a117b019d5e4383da424b8b671 -->
+<!-- END_422f74d86f0bc1771f07e53d069ae5a4 -->
 
 <!-- START_a2610a5f2ca50e55ae8da7ba04767337 -->
-## api/org/{org}
+## Get Organization Detail
+User can add new asset
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
 > Example request:
 
 ```bash
@@ -1255,6 +1287,75 @@ fetch(url, {
 
 <!-- END_7f0d5db48ac1eed21a5acb3c1291bfd5 -->
 
+<!-- START_a925a8d22b3615f12fca79456d286859 -->
+## Handle a login request to the application.
+
+> Example request:
+
+```bash
+curl -X POST "/api/auth/login" \
+    -H "Authorization: Bearer {token}"
+```
+
+```javascript
+const url = new URL("/api/auth/login");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/auth/login`
+
+
+<!-- END_a925a8d22b3615f12fca79456d286859 -->
+
+<!-- START_19ff1b6f8ce19d3c444e9b518e8f7160 -->
+## api/auth/logout
+> Example request:
+
+```bash
+curl -X POST "/api/auth/logout" \
+    -H "Authorization: Bearer {token}"
+```
+
+```javascript
+const url = new URL("/api/auth/logout");
+
+let headers = {
+    "Authorization": "Bearer {token}",
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/auth/logout`
+
+
+<!-- END_19ff1b6f8ce19d3c444e9b518e8f7160 -->
+
 <!-- START_4b9cbc8a5180be935252eedd023fb313 -->
 ## api/asset/system/info
 > Example request:
@@ -1292,8 +1393,1249 @@ fetch(url, {
         "message": ""
     },
     "data": {
-        "asset_types": [],
-        "events": [],
+        "asset_types": [
+            {
+                "id": 31,
+                "name": "Push Cart",
+                "system_id": "push-cart",
+                "slug": "push-cart",
+                "category_id": null,
+                "description": "Push Cart",
+                "enabled": 1,
+                "created_at": "2019-10-23 15:59:32",
+                "updated_at": "2019-10-23 15:59:32"
+            },
+            {
+                "id": 32,
+                "name": "Atrium Space",
+                "system_id": "atrium-space",
+                "slug": "atrium-space",
+                "category_id": null,
+                "description": "Atrium Space",
+                "enabled": 1,
+                "created_at": "2019-10-23 15:59:32",
+                "updated_at": "2019-10-23 15:59:32"
+            },
+            {
+                "id": 33,
+                "name": "Meting Room",
+                "system_id": "metting-room",
+                "slug": "metting-room",
+                "category_id": null,
+                "description": "Meting Room",
+                "enabled": 1,
+                "created_at": "2019-10-23 15:59:32",
+                "updated_at": "2019-10-23 15:59:32"
+            },
+            {
+                "id": 34,
+                "name": "Theater",
+                "system_id": "theater",
+                "slug": "theater",
+                "category_id": null,
+                "description": "Theater",
+                "enabled": 1,
+                "created_at": "2019-10-23 15:59:32",
+                "updated_at": "2019-10-23 15:59:32"
+            },
+            {
+                "id": 35,
+                "name": "Venue",
+                "system_id": "venue",
+                "slug": "venue",
+                "category_id": null,
+                "description": "Venue",
+                "enabled": 1,
+                "created_at": "2019-10-23 15:59:32",
+                "updated_at": "2019-10-23 15:59:32"
+            }
+        ],
+        "events": {
+            "Party": [
+                {
+                    "id": 10,
+                    "static_id": 10,
+                    "name": "Prom",
+                    "slug": "prom",
+                    "system_id": "prom",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Prom",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 11,
+                    "static_id": 11,
+                    "name": "New Year Eve Party",
+                    "slug": "new-year-eve-party",
+                    "system_id": "new-year-eve-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "New Year Eve Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 12,
+                    "static_id": 12,
+                    "name": "21st Birthday Party",
+                    "slug": "21st-birthday-party",
+                    "system_id": "21st-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "21st Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 13,
+                    "static_id": 13,
+                    "name": "30th Birthday Party",
+                    "slug": "30th-birthday-party",
+                    "system_id": "30th-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "30th Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 14,
+                    "static_id": 14,
+                    "name": "40th Birthday Party",
+                    "slug": "40th-birthday-party",
+                    "system_id": "40th-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "40th Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 15,
+                    "static_id": 15,
+                    "name": "50th Birthday Party",
+                    "slug": "50th-birthday-party",
+                    "system_id": "50th-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "50th Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 16,
+                    "static_id": 16,
+                    "name": "60th Birthday Party",
+                    "slug": "60th-birthday-party",
+                    "system_id": "60th-birthday-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "60th Birthday Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 17,
+                    "static_id": 17,
+                    "name": "Halloween Party",
+                    "slug": "halloween-party",
+                    "system_id": "halloween-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Halloween Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 18,
+                    "static_id": 18,
+                    "name": "Christmas Party",
+                    "slug": "christmas-party",
+                    "system_id": "christmas-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Christmas Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 19,
+                    "static_id": 19,
+                    "name": "Graduation Party",
+                    "slug": "graduation-party",
+                    "system_id": "graduation-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Graduation Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 20,
+                    "static_id": 20,
+                    "name": "Kid's 1st Birthday",
+                    "slug": "kids-1st-birthday",
+                    "system_id": "kids-1st-birthday",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Kid's 1st Birthday",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 21,
+                    "static_id": 21,
+                    "name": "Anniversary",
+                    "slug": "anniversary",
+                    "system_id": "anniversary",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Anniversary",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 22,
+                    "static_id": 22,
+                    "name": "Year End Party",
+                    "slug": "year-end-party",
+                    "system_id": "year-end-party",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Year End Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 23,
+                    "static_id": 23,
+                    "name": "Dinner and Dance",
+                    "slug": "dinner-and-dance",
+                    "system_id": "dinner-and-dance",
+                    "group_id": 1,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Dinner and Dance",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 24,
+                    "static_id": 24,
+                    "name": "Corporate Function",
+                    "slug": "corporate-function",
+                    "system_id": "corporate-function",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Corporate Function",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 25,
+                    "static_id": 25,
+                    "name": "Meetings",
+                    "slug": "meetings",
+                    "system_id": "meetings",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Meetings",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 26,
+                    "static_id": 26,
+                    "name": "Conference",
+                    "slug": "conference",
+                    "system_id": "conference",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Conference",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 27,
+                    "static_id": 27,
+                    "name": "Marketing event",
+                    "slug": "marketing-event",
+                    "system_id": "marketing-event",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Marketing event",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 28,
+                    "static_id": 28,
+                    "name": "Workshop",
+                    "slug": "workshop",
+                    "system_id": "workshop",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 29,
+                    "static_id": 29,
+                    "name": "Debut",
+                    "slug": "debut",
+                    "system_id": "debut",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Debut",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 30,
+                    "static_id": 30,
+                    "name": "Team-Building",
+                    "slug": "team-building",
+                    "system_id": "team-building",
+                    "group_id": 2,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Team-Building",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 31,
+                    "static_id": 31,
+                    "name": "Wedding",
+                    "slug": "wedding",
+                    "system_id": "wedding",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Wedding",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 32,
+                    "static_id": 32,
+                    "name": "Ceremony",
+                    "slug": "ceremony",
+                    "system_id": "ceremony",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Ceremony",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 33,
+                    "static_id": 33,
+                    "name": "Engagement",
+                    "slug": "engagement",
+                    "system_id": "engagement",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Engagement",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 34,
+                    "static_id": 34,
+                    "name": "Reception",
+                    "slug": "reception",
+                    "system_id": "reception",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Reception",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 35,
+                    "static_id": 35,
+                    "name": "Bridal Shower",
+                    "slug": "bridal-shower",
+                    "system_id": "bridal-shower",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Bridal Shower",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 36,
+                    "static_id": 36,
+                    "name": "Solemnisation",
+                    "slug": "solemnisation",
+                    "system_id": "solemnisation",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Solemnisation",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 37,
+                    "static_id": 37,
+                    "name": "Bachelorette Party",
+                    "slug": "bachelorette-party",
+                    "system_id": "bachelorette-party",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Bachelorette Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 38,
+                    "static_id": 38,
+                    "name": "Hen Party",
+                    "slug": "hen-party",
+                    "system_id": "hen-party",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Hen Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 39,
+                    "static_id": 39,
+                    "name": "Proposal",
+                    "slug": "proposal",
+                    "system_id": "proposal",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Proposal",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 40,
+                    "static_id": 40,
+                    "name": "Bachelor Party",
+                    "slug": "bachelor-party",
+                    "system_id": "bachelor-party",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Bachelor Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 41,
+                    "static_id": 41,
+                    "name": "ROM",
+                    "slug": "rom",
+                    "system_id": "rom",
+                    "group_id": 3,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "ROM",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 42,
+                    "static_id": 42,
+                    "name": "Fund raising",
+                    "slug": "fund-raising",
+                    "system_id": "fund-raising",
+                    "group_id": 4,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Fund raising",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 43,
+                    "static_id": 43,
+                    "name": "Fashion show",
+                    "slug": "fashion-show",
+                    "system_id": "fashion-show",
+                    "group_id": 4,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Fashion show",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 44,
+                    "static_id": 44,
+                    "name": "Film & video",
+                    "slug": "film-video",
+                    "system_id": "film-video",
+                    "group_id": 4,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Film & video",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 45,
+                    "static_id": 45,
+                    "name": "Networking",
+                    "slug": "networking",
+                    "system_id": "networking",
+                    "group_id": 4,
+                    "model": "event",
+                    "group_name": "Party",
+                    "description": "Networking",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Coporate Event - Dining": [
+                {
+                    "id": 46,
+                    "static_id": 46,
+                    "name": "Business Breakfast",
+                    "slug": "business-breakfast",
+                    "system_id": "business-breakfast",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Breakfast",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 47,
+                    "static_id": 47,
+                    "name": "Business Luncheon",
+                    "slug": "business-luncheon",
+                    "system_id": "business-luncheon",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Luncheon",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 48,
+                    "static_id": 48,
+                    "name": "Business Dinner",
+                    "slug": "business-dinner",
+                    "system_id": "business-dinner",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Dinner",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 49,
+                    "static_id": 49,
+                    "name": "Business Reception",
+                    "slug": "business-reception",
+                    "system_id": "business-reception",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Reception",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 50,
+                    "static_id": 50,
+                    "name": "Business Brunch",
+                    "slug": "business-brunch",
+                    "system_id": "business-brunch",
+                    "group_id": 5,
+                    "model": "event",
+                    "group_name": "Coporate Event - Dining",
+                    "description": "Business Brunch",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Coporate Event - Intimate": [
+                {
+                    "id": 51,
+                    "static_id": 51,
+                    "name": "Media Event",
+                    "slug": "media-event",
+                    "system_id": "media-event",
+                    "group_id": 6,
+                    "model": "event",
+                    "group_name": "Coporate Event - Intimate",
+                    "description": "Media Event",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 52,
+                    "static_id": 52,
+                    "name": "Press Event",
+                    "slug": "press-event",
+                    "system_id": "press-event",
+                    "group_id": 6,
+                    "model": "event",
+                    "group_name": "Coporate Event - Intimate",
+                    "description": "Press Event",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 53,
+                    "static_id": 53,
+                    "name": "Influencer Event",
+                    "slug": "influencer-event",
+                    "system_id": "influencer-event",
+                    "group_id": 6,
+                    "model": "event",
+                    "group_name": "Coporate Event - Intimate",
+                    "description": "Influencer Event",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Coporate Event - Larger Scale": [
+                {
+                    "id": 54,
+                    "static_id": 54,
+                    "name": "Corporate Seminar",
+                    "slug": "corporate-seminar",
+                    "system_id": "corporate-seminar",
+                    "group_id": 7,
+                    "model": "event",
+                    "group_name": "Coporate Event - Larger Scale",
+                    "description": "Corporate Seminar",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 55,
+                    "static_id": 55,
+                    "name": "Corporate Hackathon",
+                    "slug": "corporate-hackathon",
+                    "system_id": "corporate-hackathon",
+                    "group_id": 7,
+                    "model": "event",
+                    "group_name": "Coporate Event - Larger Scale",
+                    "description": "Corporate Hackathon",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 56,
+                    "static_id": 56,
+                    "name": "Product Launch",
+                    "slug": "product-launch",
+                    "system_id": "product-launch",
+                    "group_id": 7,
+                    "model": "event",
+                    "group_name": "Coporate Event - Larger Scale",
+                    "description": "Product Launch",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 57,
+                    "static_id": 57,
+                    "name": "Product Exhibition",
+                    "slug": "product-exhibition",
+                    "system_id": "product-exhibition",
+                    "group_id": 7,
+                    "model": "event",
+                    "group_name": "Coporate Event - Larger Scale",
+                    "description": "Product Exhibition",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Coporate Event - Party": [
+                {
+                    "id": 58,
+                    "static_id": 58,
+                    "name": "Company D&D",
+                    "slug": "company-d-and-d",
+                    "system_id": "company-d-and-d",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Company D&D",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 59,
+                    "static_id": 59,
+                    "name": "Company Cocktail Party",
+                    "slug": "company-cocktail-party",
+                    "system_id": "company-cocktail-party",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Company Cocktail Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 60,
+                    "static_id": 60,
+                    "name": "Company Rooftop Party",
+                    "slug": "company-rooftop-party",
+                    "system_id": "company-rooftop-party",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Company Rooftop Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 61,
+                    "static_id": 61,
+                    "name": "Company Christmas Party",
+                    "slug": "company-christmas-party",
+                    "system_id": "company-christmas-party",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Company Christmas Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 62,
+                    "static_id": 62,
+                    "name": "Office Party",
+                    "slug": "office-party",
+                    "system_id": "office-party",
+                    "group_id": 8,
+                    "model": "event",
+                    "group_name": "Coporate Event - Party",
+                    "description": "Office Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Formal Meeting": [
+                {
+                    "id": 63,
+                    "static_id": 63,
+                    "name": "Client Meeting",
+                    "slug": "client-meeting",
+                    "system_id": "client-meeting",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Client Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 64,
+                    "static_id": 64,
+                    "name": "Board Meeting",
+                    "slug": "board-meeting",
+                    "system_id": "board-meeting",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Board Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 65,
+                    "static_id": 65,
+                    "name": "Conference",
+                    "slug": "conference",
+                    "system_id": "conference",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Conference",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 66,
+                    "static_id": 66,
+                    "name": "Interview",
+                    "slug": "interview",
+                    "system_id": "interview",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Interview",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 67,
+                    "static_id": 67,
+                    "name": "Meeting",
+                    "slug": "meeting",
+                    "system_id": "meeting",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 68,
+                    "static_id": 68,
+                    "name": "Sales Meeting",
+                    "slug": "sales-meeting",
+                    "system_id": "sales-meeting",
+                    "group_id": 9,
+                    "model": "event",
+                    "group_name": "Formal Meeting",
+                    "description": "Sales Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Team Meeting": [
+                {
+                    "id": 69,
+                    "static_id": 69,
+                    "name": "Off-site Meeting",
+                    "slug": "off-site-meeting",
+                    "system_id": "off-site-meeting",
+                    "group_id": 10,
+                    "model": "event",
+                    "group_name": "Team Meeting",
+                    "description": "Off-site Meeting",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 70,
+                    "static_id": 70,
+                    "name": "Training",
+                    "slug": "training",
+                    "system_id": "training",
+                    "group_id": 10,
+                    "model": "event",
+                    "group_name": "Team Meeting",
+                    "description": "Training",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 71,
+                    "static_id": 71,
+                    "name": "Team Bonding",
+                    "slug": "team-bonding",
+                    "system_id": "team-bonding",
+                    "group_id": 10,
+                    "model": "event",
+                    "group_name": "Team Meeting",
+                    "description": "Team Bonding",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Cocktail Party & Happy Hour": [
+                {
+                    "id": 72,
+                    "static_id": 72,
+                    "name": "Networking",
+                    "slug": "networking",
+                    "system_id": "networking",
+                    "group_id": 11,
+                    "model": "event",
+                    "group_name": "Cocktail Party & Happy Hour",
+                    "description": "Networking",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 73,
+                    "static_id": 73,
+                    "name": "Cocktail Party",
+                    "slug": "cocktail-party",
+                    "system_id": "cocktail-party",
+                    "group_id": 11,
+                    "model": "event",
+                    "group_name": "Cocktail Party & Happy Hour",
+                    "description": "Cocktail Party",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 74,
+                    "static_id": 74,
+                    "name": "Happy Hour",
+                    "slug": "happy-hour",
+                    "system_id": "happy-hour",
+                    "group_id": 11,
+                    "model": "event",
+                    "group_name": "Cocktail Party & Happy Hour",
+                    "description": "Happy Hour",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Classes": [
+                {
+                    "id": 75,
+                    "static_id": 75,
+                    "name": "Yoga",
+                    "slug": "yoga",
+                    "system_id": "yoga",
+                    "group_id": 12,
+                    "model": "event",
+                    "group_name": "Classes",
+                    "description": "Yoga",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 76,
+                    "static_id": 76,
+                    "name": "Cooking",
+                    "slug": "cooking",
+                    "system_id": "cooking",
+                    "group_id": 12,
+                    "model": "event",
+                    "group_name": "Classes",
+                    "description": "Cooking",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 77,
+                    "static_id": 77,
+                    "name": "Fitness",
+                    "slug": "fitness",
+                    "system_id": "fitness",
+                    "group_id": 12,
+                    "model": "event",
+                    "group_name": "Classes",
+                    "description": "Fitness",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 78,
+                    "static_id": 78,
+                    "name": "Workshop",
+                    "slug": "workshop",
+                    "system_id": "workshop",
+                    "group_id": 12,
+                    "model": "event",
+                    "group_name": "Classes",
+                    "description": "Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Shoots": [
+                {
+                    "id": 79,
+                    "static_id": 79,
+                    "name": "Photo Shoot",
+                    "slug": "photo-shoot",
+                    "system_id": "photo-shoot",
+                    "group_id": 13,
+                    "model": "event",
+                    "group_name": "Shoots",
+                    "description": "Photo Shoot",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 80,
+                    "static_id": 80,
+                    "name": "Film",
+                    "slug": "film",
+                    "system_id": "film",
+                    "group_id": 13,
+                    "model": "event",
+                    "group_name": "Shoots",
+                    "description": "Film",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 81,
+                    "static_id": 81,
+                    "name": "Fashion Shoot",
+                    "slug": "fashion-shoot",
+                    "system_id": "fashion-shoot",
+                    "group_id": 13,
+                    "model": "event",
+                    "group_name": "Shoots",
+                    "description": "Fashion Shoot",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 82,
+                    "static_id": 82,
+                    "name": "Video Shoot",
+                    "slug": "video-shoot",
+                    "system_id": "video-shoot",
+                    "group_id": 13,
+                    "model": "event",
+                    "group_name": "Shoots",
+                    "description": "Video Shoot",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                }
+            ],
+            "Workshop": [
+                {
+                    "id": 83,
+                    "static_id": 83,
+                    "name": "Flower Workshop",
+                    "slug": "flower-workshop",
+                    "system_id": "flower-workshop",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Flower Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 84,
+                    "static_id": 84,
+                    "name": "Candle Making Workshop",
+                    "slug": "candle-making-workshop",
+                    "system_id": "candle-making-workshop",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Candle Making Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 85,
+                    "static_id": 85,
+                    "name": "Cooking Workshop",
+                    "slug": "cooking-workshop",
+                    "system_id": "cooking-workshop",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Cooking Workshop",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 86,
+                    "static_id": 86,
+                    "name": "Tea",
+                    "slug": "tea",
+                    "system_id": "tea",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Tea",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:32",
+                    "updated_at": "2019-10-23 15:59:32"
+                },
+                {
+                    "id": 87,
+                    "static_id": 87,
+                    "name": "Coffee",
+                    "slug": "coffee",
+                    "system_id": "coffee",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Coffee",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:33",
+                    "updated_at": "2019-10-23 15:59:33"
+                },
+                {
+                    "id": 88,
+                    "static_id": 88,
+                    "name": "Perfume",
+                    "slug": "perfume",
+                    "system_id": "perfume",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Perfume",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:33",
+                    "updated_at": "2019-10-23 15:59:33"
+                },
+                {
+                    "id": 89,
+                    "static_id": 89,
+                    "name": "Art",
+                    "slug": "art",
+                    "system_id": "art",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Art",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:33",
+                    "updated_at": "2019-10-23 15:59:33"
+                },
+                {
+                    "id": 90,
+                    "static_id": 90,
+                    "name": "Leather",
+                    "slug": "leather",
+                    "system_id": "leather",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Leather",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:33",
+                    "updated_at": "2019-10-23 15:59:33"
+                },
+                {
+                    "id": 91,
+                    "static_id": 91,
+                    "name": "Wood",
+                    "slug": "wood",
+                    "system_id": "wood",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Wood",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:33",
+                    "updated_at": "2019-10-23 15:59:33"
+                },
+                {
+                    "id": 92,
+                    "static_id": 92,
+                    "name": "Craft",
+                    "slug": "craft",
+                    "system_id": "craft",
+                    "group_id": 14,
+                    "model": "event",
+                    "group_name": "Workshop",
+                    "description": "Craft",
+                    "is_published": 1,
+                    "created_at": "2019-10-23 15:59:33",
+                    "updated_at": "2019-10-23 15:59:33"
+                }
+            ]
+        },
         "venue_types": [],
         "amenities": [],
         "locations": [
