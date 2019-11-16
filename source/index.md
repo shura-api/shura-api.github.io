@@ -907,7 +907,7 @@ User can add new asset
 curl -X POST "/api/org" \
     -H "Authorization: Bearer {token}" \
     -H "Content-Type: application/json" \
-    -d '{"name":"The company A","location":"published","currency":"Vietnam","language":"USD","timezone":"commodi","logo":10}'
+    -d '{"name":"The company A","location":"published","currency":"Vietnam","language":"USD","timezone":"qui","logo":10}'
 
 ```
 
@@ -925,7 +925,7 @@ let body = {
     "location": "published",
     "currency": "Vietnam",
     "language": "USD",
-    "timezone": "commodi",
+    "timezone": "qui",
     "logo": 10
 }
 
